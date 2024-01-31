@@ -5,6 +5,15 @@
     justify-content: center;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
 h1 {
  font-size: 50px;
  
