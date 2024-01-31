@@ -1,5 +1,14 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Workbench&display=swap" rel="stylesheet">
+
 #containerLoggin {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+h1 {
+ font-size: 50px;
+ 
 }
