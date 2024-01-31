@@ -1,20 +1,68 @@
 
-#containerLoggin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100px;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #b5b5b5;
+    color: #ecf0f1;
+}
+
+#containerLoggin {
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px;
+    text-align: center;
 }
 
 h1 {
- font-size: 50px;
- 
+    font-size: 50px;
+    margin-bottom: 10px;
 }
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#logginControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #6d6d6d;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+
