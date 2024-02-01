@@ -140,3 +140,57 @@ button {
     color: gray;
 }
 
+#containerLeft {
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 15px;
+    color: #fff;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#fav{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+ul.myfavs{
+   margin: 0;
+   margin-left: 10px;
+   padding: 0;
+}
+li.lifavs{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.lifavgroup{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    margin-right: 10px;
+}
+#fav.li.fa{
+    margin: 0 20px 0 0;
+}
+div.titleFavList{
+    text-align: justify;
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+}
+div.favList{
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: groove;
+    border-color: gray;
+    overflow-y:scroll;
+}
