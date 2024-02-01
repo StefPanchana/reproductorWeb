@@ -76,11 +76,11 @@ textarea {
 }
 
 .containerLeft {
-    grid-area: 1 / 1 / span 3 / span 1; /* Ubicamos containerLeft en la primera columna y que ocupe 3 filas */
+    grid-area: 1 / 1 / span 3 / span 1;
 }
 
 .containerRight {
-    grid-area: 1 / 2 / span 3 / span 1; /* Ubicamos containerRight en la segunda columna y que ocupe 3 filas */
+    grid-area: 1 / 2 / span 3 / span 1;
 }
 
 #containerLeft{
