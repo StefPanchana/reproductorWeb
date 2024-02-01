@@ -83,12 +83,21 @@ button {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    /* padding-right: 56px; */
 }
 
 #mySearch{
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+
+#button__search{
+    height: 37px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: medium;
 }
 
 /*Estilos containerRight*/
