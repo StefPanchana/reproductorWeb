@@ -95,3 +95,32 @@ textarea {
     gap: 10px;
 }
 
+/*Estilos containerRight*/
+
+#containerRight {
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 24px;
+    color: #fff;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+#controls button {
+    background-color: #000000;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#controls button:hover {
+    color: gray;
+}
+
