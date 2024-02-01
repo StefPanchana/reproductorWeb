@@ -15,11 +15,13 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px;
     text-align: center;
+    margin-top: 75px;
 }
 
 h1 {
     font-size: 50px;
     margin-bottom: 10px;
+    font-family: 'Sixtyfour', sans-serif;
 }
 
 h2 {
@@ -60,12 +62,6 @@ button {
     cursor: pointer;
 }
 
-textarea {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    display: none;
-}
 
 /* REPRODUCTOR STYLES */
 
@@ -100,8 +96,28 @@ textarea {
 #containerRight {
     background-color: #000000;
     border-radius: 8px;
-    padding: 24px;
+    padding: 20px;
+    margin-top: 15px;
     color: #fff;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#cover {
+    max-width: 375px; 
+    max-height: 375px;
+    width: 100%; 
+    height: auto;
+    margin: 0 auto;
+}
+
+#infoSong {
+    margin-top: 10px;
+}
+
+#infoSong label {
+    display: block;
+    margin-bottom: 10px;
 }
 
 #controls {
@@ -114,7 +130,7 @@ textarea {
     background-color: #000000;
     border: none;
     color: #fff;
-    padding: 10px;
+    padding: 8px;
     margin: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
