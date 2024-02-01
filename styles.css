@@ -1,3 +1,4 @@
+/*Estilos para el buscador*/
 
 body {
     display: flex;
@@ -65,6 +66,10 @@ textarea {
     box-sizing: border-box;
     display: none;
 }
+
+/*Estilos para el reproductorr*/
+
+
 
 
 
