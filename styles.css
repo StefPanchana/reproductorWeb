@@ -67,9 +67,37 @@ textarea {
     display: none;
 }
 
+<<<<<<< HEAD
 /*Estilos para el reproductorr*/
 
 
 
+=======
+/* REPRODUCTOR STYLES */
+
+.containerLeft{ grid-area: containerLeft; }
+.containerRight{ grid-area: containerRight; }
+
+.container {
+    display: grid;
+    grid-template-areas: 
+    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight'
+    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight'
+    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight';
+    gap: 112px;
+}
+
+#containerLeft{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+#mySearch{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+>>>>>>> origin/main
 
 
