@@ -100,6 +100,54 @@ button {
     font-size: medium;
 }
 
+#search{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+div.SearchResultsList {
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: groove;
+    border-color: gray;
+    overflow-y: scroll;
+}
+div.titleSearchResults {
+    text-align: justify;
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+}
+div.SearchResultsList {
+    text-align: justify;
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+}
+ul.SearchResult {
+    margin: 0;
+    margin-left: 10px;
+    padding: 0;
+}
+li.li_SearchResult{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.li_SearchResult_Group {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 4px;
+    margin-right: 10px;
+}
+
 /*Estilos containerRight*/
 
 #containerRight {
