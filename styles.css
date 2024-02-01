@@ -67,24 +67,20 @@ textarea {
     display: none;
 }
 
-<<<<<<< HEAD
-/*Estilos para el reproductorr*/
-
-
-
-=======
 /* REPRODUCTOR STYLES */
-
-.containerLeft{ grid-area: containerLeft; }
-.containerRight{ grid-area: containerRight; }
 
 .container {
     display: grid;
-    grid-template-areas: 
-    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight'
-    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight'
-    'containerLeft containerLeft containerLeft containerLeft containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight containerRight';
+    grid-template-columns: 1fr 3fr;
     gap: 112px;
+}
+
+.containerLeft {
+    grid-area: 1 / 1 / span 3 / span 1; /* Ubicamos containerLeft en la primera columna y que ocupe 3 filas */
+}
+
+.containerRight {
+    grid-area: 1 / 2 / span 3 / span 1; /* Ubicamos containerRight en la segunda columna y que ocupe 3 filas */
 }
 
 #containerLeft{
@@ -98,6 +94,4 @@ textarea {
     flex-direction: row;
     gap: 10px;
 }
->>>>>>> origin/main
-
 
