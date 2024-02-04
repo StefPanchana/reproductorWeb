@@ -78,6 +78,6 @@ function addItemsOfSearch(songs)
 {
     for (let i = 0; i < songs.length; i++) {
         document.getElementById("mylistofsearch").insertAdjacentHTML('beforeend',
-            `<li class="li_SearchResult_Group">${songs[i].name}<div class="li_SearchResult_Group"><a href="#"><i class="fa-solid fa-play"></i><a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-plus"></i></a></a></div></li>`);
+            `<li class="li_SearchResult_Group">${songs[i].name} - ${songs[i].author}<div class="li_SearchResult_Group"><a href="#"><i class="fa-solid fa-play"></i><a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-plus"></i></a></a></div></li>`);
     }
 }
