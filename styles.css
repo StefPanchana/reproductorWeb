@@ -68,31 +68,32 @@ button {
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    gap: 112px;
+    gap: 10px;
 }
 
 .containerLeft {
     grid-area: 1 / 1 / span 3 / span 1;
+    margin: 0 25px;
 }
 
 .containerRight {
     grid-area: 1 / 2 / span 3 / span 1;
+    margin: 0 25px;
 }
 
-#containerLeft{
+#containerLeft {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
-    /* padding-right: 56px; */
 }
 
-#mySearch{
+#mySearch {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-#button__search{
+#button__search {
     height: 37px;
     display: flex;
     flex-direction: column;
@@ -100,7 +101,7 @@ button {
     font-size: medium;
 }
 
-#search{
+#search {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -108,6 +109,7 @@ button {
     margin: 0;
     padding: 0;
 }
+
 div.SearchResultsList {
     margin: 0;
     padding: 0;
@@ -117,35 +119,53 @@ div.SearchResultsList {
     border-color: gray;
     overflow-y: scroll;
 }
-div.titleSearchResults {
-    text-align: justify;
+
+.li_SearchResult_Group {
     margin: 0;
-    margin-left: 10px;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+    margin-right: 7px;
 }
-div.SearchResultsList {
-    text-align: justify;
-    margin: 0;
+
+.li_SearchResult_Group a {
     margin-left: 10px;
-    padding: 0;
+    color: #ffffff;
+    transition: color 0.3s;
 }
+
+.li_SearchResult_Group a:hover {
+    color: #fb009f;
+}
+
+div.titleSearchResults,
+div.SearchResultsList,
 ul.SearchResult {
+    text-align: justify;
     margin: 0;
     margin-left: 10px;
     padding: 0;
 }
-li.li_SearchResult{
+
+li.li_SearchResult {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.li_SearchResult_Group {
+
+div.SearchResultsList {
     margin: 0;
     padding: 0;
-    display: flex;
-    gap: 4px;
-    margin-right: 10px;
+    border-radius: 8px;
+    border-width: 5px;
+    border-style: groove;
+    border-color: gray;
+    max-height: 100px;
+    overflow-y: auto;
+    scrollbar-color: #fb009f #c9c7c7;
 }
 
 /*Estilos containerRight*/

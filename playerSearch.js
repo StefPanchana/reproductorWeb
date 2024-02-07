@@ -1,83 +1,56 @@
 let searchControl = document.getElementById("button__search");
 
-searchControl.addEventListener(
-    "click",
-    function(){
-        let wordSearch = document.getElementById("labelSearch").value;
-        
-        //Eliminar todos los items que se encuentren en el listado antes de actualizar con la nueva busqueda
-        document.getElementById("mylistofsearch").innerHTML = '';
+searchControl.addEventListener("click", function () {
+    let wordSearchInput = document.getElementById("labelSearch");
+    let wordSearch = wordSearchInput.value.trim();
 
-        if (wordSearch != "")
-        {
-                let expression = new RegExp(wordSearch, "i");
-
-                let songs = listSongs;
-                songs = searchingByFilter(songs, expression);
-
-                //Agregar nuevos items
-                addItemsOfSearch(songs);
-        }
-        else
-        {
-                document.getElementById("mylistofsearch").innerHTML = "No hay datos para presentar..!";
-        }
+    // Validar la entrada
+    if (wordSearch === "") {
+        document.getElementById("mylistofsearch").textContent = "No hay datos para presentar..!";
+        return;
     }
-);
 
- function searchingByFilter(songs, express) {
-        let filters = [];
-        let searchEnding = [];
+    // Eliminar todos los elementos en el listado antes de actualizar con la nueva búsqueda
+    document.getElementById("mylistofsearch").textContent = '';
 
-        //Se aplica primer filtro: Nombre de cancion
-        let tempFilter =  songs.filter(song => express.exec(song.name));
-        for (let i = 0; i < tempFilter.length; i++) {
-                filters.push(tempFilter[i]);
-        }
+    let expression = new RegExp(wordSearch, "i");
 
-        //Se aplica primer filtro: Nombre de artista
-        tempFilter =  songs.filter(song => express.exec(song.author));
-        for (let i = 0; i < tempFilter.length; i++) {
-                 filters.push(tempFilter[i]);
-        }
+    let songs = listSongs;
+    let filteredSongs = searchingByFilter(songs, expression);
 
-        //Se aplica primer filtro: Genero de la cancion
-        tempFilter =  songs.filter(song => express.exec(song.genre));
-        for (let i = 0; i < tempFilter.length; i++) {
-                 filters.push(tempFilter[i]);
-        }
+    // Agregar nuevos elementos
+    addItemsOfSearch(filteredSongs);
+});
 
-        //Verificar que no existan canciones repetidas
-         for (let i = 0; i < filters.length; i++) {
-                 if (searchEnding.length > 0)
-                 {
-                         let validSong = false;
+function searchingByFilter(songs, expression) {
+    let filters = new Set();
 
-                         for (let j = 0; j < searchEnding,length; j++) {
-                                 if (filters[i] == searchEnding[j]){
-                                         validSong = true;
-                                 }
-                         }
+    // Aplicar filtro: Nombre de la canción
+    filters = new Set([...filters, ...songs.filter(song => expression.exec(song.name))]);
 
-                         if (!validSong)
-                         {
-                                 searchEnding.push(filters[i]);
-                         }
-                 }
-                 else
-                 {
-                         searchEnding.push(filters[i]);
-                 }
-         }
+    // Aplicar filtro: Nombre del artista
+    filters = new Set([...filters, ...songs.filter(song => expression.exec(song.author))]);
 
-        //Devolver canciones filtradas
-        return searchEnding;
+    // Aplicar filtro: Género de la canción
+    filters = new Set([...filters, ...songs.filter(song => expression.exec(song.genre))]);
+
+    // Devolver canciones filtradas
+    return Array.from(filters);
 }
 
-function addItemsOfSearch(songs)
-{
-    for (let i = 0; i < songs.length; i++) {
-        document.getElementById("mylistofsearch").insertAdjacentHTML('beforeend',
-            `<li class="li_SearchResult_Group">${songs[i].name} - ${songs[i].author}<div class="li_SearchResult_Group"><a href="#"><i class="fa-solid fa-play"></i><a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-plus"></i></a></a></div></li>`);
-    }
+function addItemsOfSearch(songs) {
+    let listContainer = document.getElementById("mylistofsearch");
+
+    songs.forEach(song => {
+        let listItem = document.createElement("li");
+        listItem.className = "li_SearchResult_Group";
+        listItem.textContent = `${song.name} - ${song.author}`;
+
+        let iconsDiv = document.createElement("div");
+        iconsDiv.className = "li_SearchResult_Group";
+        iconsDiv.innerHTML = '<a href="#"><i class="fa-solid fa-play"></i></a><a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-plus"></i></a>';
+
+        listItem.appendChild(iconsDiv);
+        listContainer.appendChild(listItem);
+    });
 }
