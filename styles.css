@@ -138,7 +138,7 @@ div.SearchResultsList {
 }
 
 .li_SearchResult_Group a:hover {
-    color: #fb009f;
+    color: #e7209e;
 }
 
 div.titleSearchResults,
@@ -166,7 +166,7 @@ div.SearchResultsList {
     border-color: gray;
     max-height: 100px;
     overflow-y: auto;
-    scrollbar-color: #fb009f #c9c7c7;
+    scrollbar-color: #e7209e #c9c7c7;
 }
 
 /*Estilos containerRight*/
