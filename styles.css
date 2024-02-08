@@ -241,13 +241,13 @@ ul.myfavs{
    margin-left: 10px;
    padding: 0;
 }
-li.lifavs{
+li.li_favs{
     list-style-type: none;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.lifavgroup{
+.li_favgroup{
     margin: 0;
     padding: 0;
     display: flex;

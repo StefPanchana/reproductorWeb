@@ -1,3 +1,7 @@
+/*=================================================================================================================*/
+/*Clase base para el array de canciones a usar en el programa*/
+/*=================================================================================================================*/
+
 class Song{
     name;
     author;
@@ -16,27 +20,143 @@ class Song{
         this.genre = genre;
         this.cover = cover;
     }
+
+    name() {
+        return this.name;
+    }
+
+    name(value) {
+        this.name = value;
+    }
+
+    author() {
+        return this.author;
+    }
+
+    author(value) {
+        this.author = value;
+    }
+
+    duration() {
+        return this.duration;
+    }
+
+    duration(value) {
+        this.duration = value;
+    }
+
+    album() {
+        return this.album;
+    }
+
+    album(value) {
+        this.album = value;
+    }
+
+    year() {
+        return this.year;
+    }
+
+    year(value) {
+        this.year = value;
+    }
+
+    genre() {
+        return this.genre;
+    }
+
+    genre(value) {
+        this.genre = value;
+    }
+
+    cover() {
+        return this.cover;
+    }
+
+    cover(value) {
+        this.cover = value;
+    }
+
+    getNameAndAuthorOfSong(){
+        return `${this.name} - ${this.author}`;
+    }
 }
 
-let listSongs = [
-    new Song("Fire", "BTS", "00:02:00", "Younth", 2016, "Kpop", "1.png"),
-    new Song("Aurora", "Dero", "00:04:00", "Oid Mortales Records", 1992, "Dance/Electronic", "2.jpeg"),
-    new Song("Blah Blah Blah","Armin van Buuren","00:03:50","Live at Ultra Music Festival Miami 2018 (Highlights)",2018,"Dance/Electronic","3.jpg"),
-    new Song("Fire on fire", "Sam Smith", "00:04:00", "Let’s Dance - Das Tanzalbum 2019", 2019,  "Dance/Electronic", "4.jpg"),
-    new Song("Marisola Remix", "Cris MJ, Standly, Nicki Nicole, Duki", 2022, "Urbano Latino", "Single"),
-    new Song("La Original", "Emilia, Tini", 2023, "Urbano Latino", ".mp3"),
-    new Song("Los del Espacio", "LIT killah, Tiago PZK, Maria Becerra, Duki, Emilia, Rusherking, Big One, FMK", 2023, "Urbano Latino", "Los Del Espacio"),
-    new Song("Bellakeo", "Peso Pluma, Anitta", 2023, "Urbano Latino", "Bellakeo"),
-    new Song("Perro Negro", "Bad Bunny ft. Feid", 2023, "Urbano Latino", "Nadi sabe lo que va a pasar mañana"),
-    new Song("Feliz Cumpleaños Ferxxo", "Feid", 2022, "Urbano Latino", "Feliz Cumpleaños Ferxxo"),
-    new Song("Provenza", "Karol G", 2022, "Urbano Latino", "Mañana sera bonito"),
-    new Song("Eternity", "Anyma & Chris Avantgarde", 2023, "Techno melódico", "Genesys"),
-    new Song("Syren", "Anyma & Rebūke", 2023, "Techno melódico", "Genesys"),
-    new Song("Simulation", "Anyma & Chris Avantgarde", 2023, "Techno melódico", "Genesys"),
-    new Song("Unearth", "Anyma", 2023, "Techno melódico", "Genesys"),
-    new Song("Aria", "Argy & Omnya", 2023, "Techno melódico", "Single"),
-    new Song("Real Love", "Martin Garrix & Lloyiso", 2023, "EDM", "Real Love")
-];
+/*=================================================================================================================*/
+/*Clase base de la lista de canciones a usar dentro del programa
+* Lista de Busqueda: ListSearch
+* Lista de Canciones en Cola: listPlaylist
+* Lista de Favoritos: listFav*/
+/*=================================================================================================================*/
 
-// Resto del código
+class Playlist{
+    listName;
+    listOfSongs = new Array.of(new Song());
+
+    constructor(listName, listOfSongs) {
+        this.listName = listName;
+        this.listOfSongs = listOfSongs;
+    }
+
+    set addSong(song)
+    {
+        this.listOfSongs.push(song);
+    }
+
+    set removeSong(song)
+    {
+        this.listOfSongs.filter(s => s !== song);
+    }
+}
+
+/*=================================================================================================================*/
+/*Clase del reproductor del programa*/
+/*=================================================================================================================*/
+
+class Player {
+    currentSong;
+    nameCurrentPlaylist;
+    stackOfSongs= [];
+
+    constructor(lists) {
+        this.nameCurrentPlaylist = "";
+        this.setstackSongs(lists);
+        this.currentSong = (this.stackOfSongs)[0];
+        this.updateStackOfSongs();
+    }
+
+    setstackSongs = function(listofsongs)
+    {
+        //Limpio la cola de reproduccion actual
+        if (this.stackOfSongs.length > 0)
+        {
+            this.stackOfSongs = [];
+        }
+
+        //Recorro la lista para llenar la pila de cola de canciones para reproducir
+        for (let i = 0; i < listofsongs.length; i++)
+        {
+            this.stackOfSongs.push(listofsongs[i]);
+        }
+    }
+
+    updateStackOfSongs = function()
+    {
+        let listContainer = document.getElementById("myplayer");
+
+        this.stackOfSongs.forEach(stackOfSongs => {
+            let listItem = document.createElement("li");
+            listItem.className = "li_MyPlaylist_Group";
+            listItem.textContent = stackOfSongs.getNameAndAuthorOfSong();
+
+            let iconsDiv = document.createElement("div");
+            iconsDiv.className = "li_MyPlaylist_Group";
+            iconsDiv.innerHTML = '<a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-trash"></i></a>';
+
+            listItem.appendChild(iconsDiv);
+            listContainer.appendChild(listItem);
+        });
+    }
+}
+
 

@@ -1,8 +1,7 @@
 let searchControl = document.getElementById("button__search");
 
 searchControl.addEventListener("click", function () {
-    let wordSearchInput = document.getElementById("labelSearch");
-    let wordSearch = wordSearchInput.value.trim();
+    let wordSearch = document.getElementById("labelSearch").value.trim();
 
     // Validar la entrada
     if (wordSearch === "") {
@@ -15,8 +14,7 @@ searchControl.addEventListener("click", function () {
 
     let expression = new RegExp(wordSearch, "i");
 
-    let songs = listSongs;
-    let filteredSongs = searchingByFilter(songs, expression);
+    let filteredSongs = searchingByFilter(listSongsDefault, expression);
 
     // Agregar nuevos elementos
     addItemsOfSearch(filteredSongs);

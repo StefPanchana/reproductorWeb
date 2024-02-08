@@ -15,7 +15,7 @@
                 <label for="">Buscador</label>
             </div>
             <div id="mySearch">
-                <input type="search" name="" id="labelSearch" placeholder="Busca tu canción...">
+                <input type="search" name="" id="labelSearch" placeholder="Busca tu canción aqui...">
                 <button id="button__search">Buscar</button>
             </div>
             <div id="search">
@@ -25,14 +25,6 @@
                     </div>
                     <div class="SearchResultsList">
                         <ul id="mylistofsearch" title="SearchResults" class="SearchResult">
-                            <li class="li_SearchResult">
-                                <div class="li_SearchResult_Group">
-                                </div>
-                            </li>
-                            <li class="li_SearchResult">
-                                <div class="li_SearchResult_Group">
-                                </div>
-                            </li>
                             <li class="li_SearchResult">
                                 <div class="li_SearchResult_Group">
                                 </div>
@@ -47,26 +39,9 @@
                         <span><strong>My Playlist</strong></span>
                     </div>
                     <div class="MyPlaylistdiv">
-                        <ul title="My Playlist" class="MyPlaylist">
-                            <li class="li_MyPlaylist">Canción 1
+                        <ul id="myplayer" title="My Playlist" class="MyPlaylist">
+                            <li class="li_MyPlaylist">
                                 <div class="li_MyPlaylist_Group">
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                </div>
-                            </li>
-                            <li class="li_MyPlaylist">Canción 2
-                                <div class="li_MyPlaylist_Group">
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                </div>
-                            </li>
-                            <li class="li_MyPlaylist">Canción 3
-                                <div class="li_MyPlaylist_Group">
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
                                 </div>
                             </li>
                         </ul>
@@ -76,29 +51,12 @@
             <div id="fav">
                 <div class="containerFavs">
                     <div class="titleFavList">
-                        <span><strong>Mis Fav´s</strong></span>
+                        <span><strong>My Favs</strong></span>
                     </div>
                     <div class="favList">
-                        <ul title="My Favs ♪" class="myfavs">
-                            <li class="lifavs">Fire - BTS 
-                                <div class="lifavgroup">
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                </div>
-                            </li>
-                            <li class="lifavs">Aurora - Dero 
-                                <div class="lifavgroup">
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
-                                </div>
-                            </li>
-                            <li class="lifavs">Blah Blah Blah - Armin van Buuren
-                                <div class="lifavgroup"> 
-                                    <a href="#"><i class="fa-solid fa-play"></i></a>
-                                    <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                    <a href="#"><i class="fa-solid fa-plus"></i></a>
+                        <ul title="favs" class="myfavs">
+                            <li class="li_favs">
+                                <div class="li_favgroup">
                                 </div>
                             </li>
                         </ul>
@@ -126,5 +84,6 @@
     </div>
     <script src="javascript.js"></script>
     <script src="playerSearch.js"></script>
+    <script src="loadPlayer.js"></script>
 </body>
 </html>
