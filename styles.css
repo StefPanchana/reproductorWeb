@@ -127,17 +127,22 @@ div.SearchResultsList {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
     margin-right: 7px;
 }
 
-.li_SearchResult_Group a {
-    margin-left: 15px;
-    color: #ffffff;
-    transition: color 0.3s;
+.li_SearchResult_Group button {
+    background-color: #000000;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 20px;
 }
 
-.li_SearchResult_Group a:hover {
+.li_SearchResult_Group button:hover {
     color: #e7209e;
 }
 
@@ -215,7 +220,7 @@ div.SearchResultsList {
 }
 
 #controls button:hover {
-    color: gray;
+    color: rgb(0, 234, 255);
 }
 
 #containerLeft {

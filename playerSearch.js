@@ -46,7 +46,7 @@ function addItemsOfSearch(songs) {
 
         let iconsDiv = document.createElement("div");
         iconsDiv.className = "li_SearchResult_Group";
-        iconsDiv.innerHTML = '<a href="#"><i class="fa-solid fa-play"></i></a><a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-plus"></i></a>';
+        iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
 
         listItem.appendChild(iconsDiv);
         listContainer.appendChild(listItem);
