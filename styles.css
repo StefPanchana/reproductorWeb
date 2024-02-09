@@ -70,6 +70,7 @@ button {
     grid-template-columns: 1fr 3fr;
     gap: 10px;
     font-family: 'Titillium Web', sans-serif;
+    background: linear-gradient(45deg, #ff69b4, #d843af, #e91e63, #ff8c00);
 }
 
 .containerLeft {
@@ -82,17 +83,16 @@ button {
     margin: 0 25px;
 }
 
-#containerLeft {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-}
-
 #mySearch {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
+
+#mySearch__tittle label {
+    font-size: 25px; 
+    color: #f4557a;
+  }
 
 #button__search {
     height: 37px;
@@ -111,6 +111,11 @@ button {
     color: #fff;
     margin: 0;
     padding: 0;
+}
+
+.titleSearchResults {
+    font-size: 20px;
+    color: #e7209e;
 }
 
 div.SearchResultsList {
@@ -185,6 +190,11 @@ div.SearchResultsList {
     color: #fff;
     margin: 0;
     padding: 0;
+}
+
+.titleMyPlaylist {
+    font-size: 20px;
+    color: #e67409;
 }
 
 div.MyPlaylistdiv {
