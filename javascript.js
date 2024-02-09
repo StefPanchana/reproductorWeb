@@ -151,7 +151,7 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<a href="#"><i class="fa-regular fa-heart"></i></a><a href="#"><i class="fa-solid fa-trash"></i></a>';
+            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
