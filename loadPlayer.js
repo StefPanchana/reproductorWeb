@@ -20,6 +20,19 @@ window.onload = function() {
         new Song("Unearth", "Anyma", "00:04:15", "Genesys", 2023, "Techno melódico", "15.jpeg"),
         new Song("Aria", "Argy & Omnya", "00:05:15", "Genesys", 2023, "Techno melódico", "16.jpeg"),
         new Song("Real Love", "Martin Garrix & Lloyiso", "00:03:11",  "Real Love", 2023, "EDM", "17.jpeg")
+        new Song("Dancing Like Butterfly Wings", "ATEEZ", "00:03:02", 2019, "Kpop", "TREASURE EP.3: One To All")
+        new Song("Wild Flower", "RM & Youjeen", "00:04:35", 2022, "Kpop", "Indigo")
+        new Song("Love Lost", "Mac Miller & The Temper Trap", "00:02:43", 2022, "Hip Hop", "I Love Life, Thank You")
+        new Song("Brother", "Kodaline", "00:03:23", 2018, "Indie", "Politics of Living")
+        new Song("Weast Coast", "Imagine Dragons", "00:03:37", 2018, "Alternative Rock", "Origins")
+        new Song("Hold me tight or don't", "Fall Out Boy", "00:03:27", 2018, "Dance Pop", "MANIA")
+        new Song("Outro: Wings", "BTS", "00:03:45", 2017, "Korean Dance", "You Never Walked Alone")
+        new Song("Mr. Blue Sky", "Electric Light Orchestra", "00:05:02", 1977, "Progressive Pop", "Out of the Blue")
+        new Song("New Romantics (Taylor's Version)", "Taylor Swift", "00:03:50", 2023, "Pop" , "1989 (Taylor's Version)")
+        new Song("In the Shadows", "The Rasmus", "00:03:52", 2003, "Alternative Rock", "Dead Letters")
+        new Song("Livin in a World Without You", "The Rasmus", "00:03:50", 2008, "Pop/Rock", "Black Roses")
+        new Song("Jezebel", "The Rasmus", "00:03:24", 2022, "Rock", "Rise")
+        new Song("One Summer Away", "Joe Hisaishi", "00:04:05", 2001, "Classical", "Spirited Away Soundtrack")
     ];
 
     let playerWeb = new Player(listSongsDefault);
