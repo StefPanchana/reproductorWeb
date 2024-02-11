@@ -3,15 +3,16 @@
 /*=================================================================================================================*/
 
 class Song{
-    name;
-    author;
-    duration;
-    album;
-    year;
-    genre;
-    cover;
+    // name;
+    // author;
+    // duration;
+    // album;
+    // year;
+    // genre;
+    // cover;
 
-    constructor(name, author, duration, album, year, genre, cover){
+
+    constructor(name, author, duration, album, year, genre, cover, urlSong){
         this.name = name;
         this.author = author;
         this.duration = duration;
@@ -19,6 +20,7 @@ class Song{
         this.year = year;
         this.genre = genre;
         this.cover = cover;
+        this.urlSong = urlSong;
     }
 
     name() {
@@ -117,12 +119,21 @@ class Player {
     currentSong;
     nameCurrentPlaylist;
     stackOfSongs= [];
+    play;
+    
 
     constructor(lists) {
         this.nameCurrentPlaylist = "";
         this.setstackSongs(lists);
         this.currentSong = (this.stackOfSongs)[0];
         this.updateStackOfSongs();
+        this.audio = new Audio();
+        this.play();
+        let play_button = document.getElementById("play");
+
+        play_button.addEventListener('click', () => {
+            this.play();
+        } )
     }
 
     setstackSongs = function(listofsongs)
@@ -156,6 +167,15 @@ class Player {
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
         });
+    }
+
+    //Metodo para reproducir cancion actual al dar click al boton #play
+
+    play = function() {
+        if (this.currentSong !== undefined){
+            this.audio.src = "/canciones/"+this.currentSong.urlSong;
+            this.audio.play();
+        }
     }
 }
 
