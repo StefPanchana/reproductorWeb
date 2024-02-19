@@ -139,16 +139,16 @@ class Player {
     audio;
     play;
 
-    constructor(lists) {
-        this.currentSong = (this.stackOfSongs)[0];
-        this.audio = new Audio();
+    // constructor(lists) {
+    //     this.currentSong = (this.stackOfSongs)[0];
+    //     this.audio = new Audio();
 
-        let play_button = document.getElementById("play");
+    //     let play_button = document.getElementById("play");
         
-        play_button.addEventListener('click', () => {
-            this.play();
-        } )
-    }
+    //     play_button.addEventListener('click', () => {
+    //         this.play();
+    //     } )
+    // }
 
     updateStackOfSongs = function(listOfPlayer)
     {
@@ -157,7 +157,7 @@ class Player {
         this.currentSong = (this.stackOfSongs)[0];
         this.updateStackOfSongs();
         this.audio = new Audio();
-        this.play();
+        
         let play_button = document.getElementById("play");
 
         play_button.addEventListener('click', () => {

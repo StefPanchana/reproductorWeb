@@ -15,7 +15,6 @@ window.onload = function() {
     //======================================================================================================//
 
     listSongsDefault = [
-<<<<<<< HEAD
         new Song("Fire", "BTS", "00:02:00", "Younth", 2016, "Kpop", "1.png","1.mp3"),
         new Song("Aurora", "Dero", "00:04:00", "Oid Mortales Records", 1992, "Dance/Electronic", "2.jpeg", "2.mp3"),
         new Song("Blah Blah Blah","Armin van Buuren","00:03:50","Live at Ultra Music Festival Miami 2018 (Highlights)",2018,"Dance/Electronic","3.jpg", "3.mp3"),
@@ -46,7 +45,6 @@ window.onload = function() {
         new Song("Livin in a World Without You", "The Rasmus", "00:03:50", 2008, "Pop/Rock", "Black Roses", "28.mp3"),
         new Song("Jezebel", "The Rasmus", "00:03:24", 2022, "Rock", "Rise", "29.mp3"),
         new Song("One Summer Away", "Joe Hisaishi", "00:04:05", 2001, "Classical", "Spirited Away Soundtrack", "30.mp3"),
-=======
         new Song("1","Fire", "BTS", "00:02:00", "Younth", 2016, "Kpop", "1.png","1.mp3"),
         new Song("2","Aurora", "Dero", "00:04:00", "Oid Mortales Records", 1992, "Dance/Electronic", "2.jpeg", "2.mp3"),
         new Song("3","Blah Blah Blah","Armin van Buuren","00:03:50","Live at Ultra Music Festival Miami 2018 (Highlights)",2018,"Dance/Electronic","3.jpg", "3.mp3"),
@@ -77,7 +75,6 @@ window.onload = function() {
         new Song("28","Livin in a World Without You", "The Rasmus", "00:03:50", 2008, "Pop/Rock", "Black Roses", "28.jpg","28.mp3"),
         new Song("29","Jezebel", "The Rasmus", "00:03:24", 2022, "Rock", "Rise", "29.png","29.mp3"),
         new Song("30","One Summer Away", "Joe Hisaishi", "00:04:05", 2001, "Classical", "Spirited Away Soundtrack", "30.jpg","30.mp3"),
->>>>>>> 158a6a44b06acc066facbf6800c05f3805fcdd19
     ];
 
     //======================================================================================================//
