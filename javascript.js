@@ -164,7 +164,7 @@ class Player {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setstackSongs(listOfPlayer.listOfSongs);
         this.currentSong = (this.stackOfSongs)[0];
-        this.updateStackOfSongs();
+        this.updateStack();
         this.audio = new Audio();
         this.play();
         let play_button = document.getElementById("play");
@@ -172,6 +172,11 @@ class Player {
         play_button.addEventListener('click', () => {
             this.play();
         } )
+
+        //Verifico si existe una cancion cargada por defecto para mostrar informacion en el player
+        if (this.currentSong != null) {
+            this.updateCurrentSong(this.currentSong);
+        }
     }
 
     setstackSongs = function(listofsongs)
@@ -221,8 +226,7 @@ class Player {
     }
 
     //Metodo para reproducir cancion actual al dar click al boton #play
-
-    /* play = function() {
+     play = function() {
         if (this.currentSong !== undefined){
             this.audio.src = "/canciones/"+this.currentSong.urlSong;
             this.audio.play();
