@@ -128,12 +128,21 @@ class Player {
         this.currentSong = (this.stackOfSongs)[0];
         this.updateStackOfSongs();
         this.audio = new Audio();
-        this.play();
-        let play_button = document.getElementById("play");
+        // this.play();
 
+        //escucha click de #play
+        let play_button = document.getElementById("play");
         play_button.addEventListener('click', () => {
             this.play();
         } )
+
+            //escucha click de #stop
+        let stop_button = document.getElementById("stop");
+        stop_button.addEventListener('click', () => {
+            this.stop();
+        } )
+
+
     }
 
     setstackSongs = function(listofsongs)
@@ -173,10 +182,14 @@ class Player {
 
     play = function() {
         if (this.currentSong !== undefined){
-            this.audio.src = "/canciones/"+this.currentSong.urlSong;
+            this.audio.src = "canciones/"+this.currentSong.urlSong;
             this.audio.play();
         }
     }
+
+    // stop = function() {
+
+    // }
 }
 
 
