@@ -139,18 +139,15 @@ class Player {
     audio;
     play;
 
-    constructor() {
+    constructor(lists) {
+        this.currentSong = (this.stackOfSongs)[0];
         this.audio = new Audio();
 
-        /*=================================================================================================================*/
-        //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
-        /*=================================================================================================================*/
-        // this.play();
-        // let play_button = document.getElementById("play");
-        //
-        // play_button.addEventListener('click', () => {
-        //     this.play();
-        // } )
+        let play_button = document.getElementById("play");
+        
+        play_button.addEventListener('click', () => {
+            this.play();
+        } )
     }
 
     updateStackOfSongs = function(listOfPlayer)
@@ -216,9 +213,9 @@ class Player {
 
     //Metodo para reproducir cancion actual al dar click al boton #play
 
-    /* play = function() {
+    play = function() {
         if (this.currentSong !== undefined){
-            this.audio.src = "/canciones/"+this.currentSong.urlSong;
+            this.audio.src = "canciones/"+this.currentSong.urlSong;
             this.audio.play();
         }
     }
