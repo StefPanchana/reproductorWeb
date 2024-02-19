@@ -151,6 +151,12 @@ class Player {
         // play_button.addEventListener('click', () => {
         //     this.play();
         // } )
+
+        /* //escucha click de #stop
+        let stop_button = document.getElementById("stop");
+        stop_button.addEventListener('click', () => {
+            this.stop();
+        } ) */
     }
 
     updateStackOfSongs = function(listOfPlayer)
@@ -202,7 +208,7 @@ class Player {
     updateCurrentSong = function(song)
     {
         //Actualizacion del Cover de la cancion seleccionada
-        document.getElementById("cover").src = "/caratulas/" + song.cover;
+        document.getElementById("cover").src = "./caratulas/" + song.cover;
 
         //Actualizacion de los detalles de la cancion en los labels
         document.getElementById("nameSong").textContent = song.name;
