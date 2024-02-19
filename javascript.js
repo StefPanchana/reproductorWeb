@@ -3,16 +3,18 @@
 /*=================================================================================================================*/
 
 class Song{
-    // name;
-    // author;
-    // duration;
-    // album;
-    // year;
-    // genre;
-    // cover;
+    idSong;
+    name;
+    author;
+    duration;
+    album;
+    year;
+    genre;
+    cover;
+    urlSong;
 
-
-    constructor(name, author, duration, album, year, genre, cover, urlSong){
+    constructor(idSong, name, author, duration, album, year, genre, cover, urlSong){
+        this.idSong = idSong;
         this.name = name;
         this.author = author;
         this.duration = duration;
@@ -23,60 +25,76 @@ class Song{
         this.urlSong = urlSong;
     }
 
-    name() {
+    get idSong() {
+        return this.idSong;
+    }
+
+    set idSong(value) {
+        this.idSong = value;
+    }
+
+    get name() {
         return this.name;
     }
 
-    name(value) {
+    set name(value) {
         this.name = value;
     }
 
-    author() {
+    get author() {
         return this.author;
     }
 
-    author(value) {
+    set author(value) {
         this.author = value;
     }
 
-    duration() {
+    get duration() {
         return this.duration;
     }
 
-    duration(value) {
+    set duration(value) {
         this.duration = value;
     }
 
-    album() {
+    get album() {
         return this.album;
     }
 
-    album(value) {
+    set album(value) {
         this.album = value;
     }
 
-    year() {
+    get year() {
         return this.year;
     }
 
-    year(value) {
+    set year(value) {
         this.year = value;
     }
 
-    genre() {
+    get genre() {
         return this.genre;
     }
 
-    genre(value) {
+    set genre(value) {
         this.genre = value;
     }
 
-    cover() {
+    get cover() {
         return this.cover;
     }
 
-    cover(value) {
+    set cover(value) {
         this.cover = value;
+    }
+
+    get urlSong() {
+        return this.urlSong;
+    }
+
+    set urlSong(value) {
+        this.urlSong = value;
     }
 
     getNameAndAuthorOfSong(){
@@ -93,7 +111,7 @@ class Song{
 
 class Playlist{
     listName;
-    listOfSongs = new Array.of(new Song());
+    listOfSongs ;
 
     constructor(listName, listOfSongs) {
         this.listName = listName;
@@ -114,26 +132,38 @@ class Playlist{
 /*=================================================================================================================*/
 /*Clase del reproductor del programa*/
 /*=================================================================================================================*/
-
 class Player {
     currentSong;
     nameCurrentPlaylist;
     stackOfSongs= [];
+    audio;
     play;
-    
 
-    constructor(lists) {
-        this.nameCurrentPlaylist = "";
-        this.setstackSongs(lists);
-        this.currentSong = (this.stackOfSongs)[0];
-        this.updateStackOfSongs();
+    constructor() {
         this.audio = new Audio();
-        this.play();
-        let play_button = document.getElementById("play");
 
-        play_button.addEventListener('click', () => {
-            this.play();
-        } )
+        /*=================================================================================================================*/
+        //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
+        /*=================================================================================================================*/
+        // this.play();
+        // let play_button = document.getElementById("play");
+        //
+        // play_button.addEventListener('click', () => {
+        //     this.play();
+        // } )
+    }
+
+    updateStackOfSongs = function(listOfPlayer)
+    {
+        this.nameCurrentPlaylist = listOfPlayer.listName;
+        this.setstackSongs(listOfPlayer.listOfSongs);
+        this.currentSong = (this.stackOfSongs)[0];
+        this.updateStack();
+
+        //Verifico si existe una cancion cargada por defecto para mostrar informacion en el player
+        if (this.currentSong != null) {
+            this.updateCurrentSong(this.currentSong);
+        }
     }
 
     setstackSongs = function(listofsongs)
@@ -151,7 +181,7 @@ class Player {
         }
     }
 
-    updateStackOfSongs = function()
+    updateStack = function()
     {
         let listContainer = document.getElementById("myplayer");
 
@@ -169,14 +199,27 @@ class Player {
         });
     }
 
+    updateCurrentSong = function(song)
+    {
+        //Actualizacion del Cover de la cancion seleccionada
+        document.getElementById("cover").src = "/caratulas/" + song.cover;
+
+        //Actualizacion de los detalles de la cancion en los labels
+        document.getElementById("nameSong").textContent = song.name;
+        document.getElementById("authorSong").textContent = song.author;
+        document.getElementById("yearSong").textContent = song.year;
+        document.getElementById("genreSong").textContent = song.genre;
+        document.getElementById("durationSong").textContent = song.duration;
+    }
+
     //Metodo para reproducir cancion actual al dar click al boton #play
 
-    play = function() {
+    /* play = function() {
         if (this.currentSong !== undefined){
             this.audio.src = "./canciones/"+this.currentSong.urlSong;
             this.audio.play();
         }
-    }
+    } */
 }
 
 
