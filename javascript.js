@@ -173,7 +173,7 @@ class Player {
 
     play = function() {
         if (this.currentSong !== undefined){
-            this.audio.src = "/canciones/"+this.currentSong.urlSong;
+            this.audio.src = "./canciones/"+this.currentSong.urlSong;
             this.audio.play();
         }
     }

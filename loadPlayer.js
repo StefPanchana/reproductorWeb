@@ -37,6 +37,4 @@ window.onload = function() {
 
     let playerWeb = new Player(listSongsDefault);
 
-    playerWeb.nameCurrentPlaylist = listSongsDefault.nameCurrentPlaylist;
-    playerWeb.setstackSongs("listadicional");
 };
