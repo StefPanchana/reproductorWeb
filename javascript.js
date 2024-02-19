@@ -143,19 +143,29 @@ class Player {
     //     this.currentSong = (this.stackOfSongs)[0];
     //     this.audio = new Audio();
 
-    //     let play_button = document.getElementById("play");
-        
-    //     play_button.addEventListener('click', () => {
-    //         this.play();
-    //     } )
-    // }
+        /*=================================================================================================================*/
+        //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
+        /*=================================================================================================================*/
+        // this.play();
+        // let play_button = document.getElementById("play");
+        //
+        // play_button.addEventListener('click', () => {
+        //     this.play();
+        // } )
+
+        /* //escucha click de #stop
+        let stop_button = document.getElementById("stop");
+        stop_button.addEventListener('click', () => {
+            this.stop();
+        } ) */
+    }
 
     updateStackOfSongs = function(listOfPlayer)
     {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setstackSongs(listOfPlayer.listOfSongs);
         this.currentSong = (this.stackOfSongs)[0];
-        this.updateStackOfSongs();
+        this.updateStack();
         this.audio = new Audio();
         
         let play_button = document.getElementById("play");
@@ -163,6 +173,11 @@ class Player {
         play_button.addEventListener('click', () => {
             this.play();
         } )
+
+        //Verifico si existe una cancion cargada por defecto para mostrar informacion en el player
+        if (this.currentSong != null) {
+            this.updateCurrentSong(this.currentSong);
+        }
     }
 
     setstackSongs = function(listofsongs)
@@ -201,7 +216,7 @@ class Player {
     updateCurrentSong = function(song)
     {
         //Actualizacion del Cover de la cancion seleccionada
-        document.getElementById("cover").src = "/caratulas/" + song.cover;
+        document.getElementById("cover").src = "./caratulas/" + song.cover;
 
         //Actualizacion de los detalles de la cancion en los labels
         document.getElementById("nameSong").textContent = song.name;
@@ -212,8 +227,7 @@ class Player {
     }
 
     //Metodo para reproducir cancion actual al dar click al boton #play
-
-    play = function() {
+     play = function() {
         if (this.currentSong !== undefined){
             this.audio.src = "canciones/"+this.currentSong.urlSong;
             this.audio.play();
