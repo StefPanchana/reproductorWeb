@@ -139,40 +139,31 @@ class Player {
     audio;
     play;
 
-    // constructor(lists) {
-    //     this.currentSong = (this.stackOfSongs)[0];
-    //     this.audio = new Audio();
+     constructor() {
+         this.audio = new Audio();
 
         /*=================================================================================================================*/
         //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
         /*=================================================================================================================*/
-        // this.play();
-        // let play_button = document.getElementById("play");
-        //
-        // play_button.addEventListener('click', () => {
-        //     this.play();
-        // } )
+        this.play();
 
-        /* //escucha click de #stop
+        let play_button = document.getElementById("play");
+        play_button.addEventListener('click', () => {
+             this.play();
+         } )
+
+        //escucha click de #stop
         let stop_button = document.getElementById("stop");
         stop_button.addEventListener('click', () => {
             this.stop();
-        } ) */
-    //}
+        } ) 
+    }
 
     updateStackOfSongs = function(listOfPlayer)
     {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setstackSongs(listOfPlayer.listOfSongs);
         this.currentSong = (this.stackOfSongs)[28];
-        this.updateStack();
-        this.audio = new Audio();
-        
-        let play_button = document.getElementById("play");
-
-        play_button.addEventListener('click', () => {
-            this.play();
-        } )
 
         //Verifico si existe una cancion cargada por defecto para mostrar informacion en el player
         if (this.currentSong != null) {
@@ -193,24 +184,6 @@ class Player {
         {
             this.stackOfSongs.push(listofsongs[i]);
         }
-    }
-
-    updateStack = function()
-    {
-        let listContainer = document.getElementById("myplayer");
-
-        this.stackOfSongs.forEach(stackOfSongs => {
-            let listItem = document.createElement("li");
-            listItem.className = "li_MyPlaylist_Group";
-            listItem.textContent = stackOfSongs.getNameAndAuthorOfSong();
-
-            let iconsDiv = document.createElement("div");
-            iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
-
-            listItem.appendChild(iconsDiv);
-            listContainer.appendChild(listItem);
-        });
     }
 
     updateCurrentSong = function(song)
