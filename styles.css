@@ -432,3 +432,12 @@ div.favListdiv {
 #play:hover, #play.active {
     color: #00eaff;
 }
+
+#pause{
+    display: none;
+}
+
+/* #pause:hover,
+#pause.active {
+    color: #00eaff;
+} */

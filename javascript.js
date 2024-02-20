@@ -138,26 +138,44 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
+    
 
     constructor() {
         this.audio = new Audio();
         this.muteController = new MuteController(this.audio);
-    }
+        this.currentSongTime = 0;
 
-    updateStackOfSongs(listOfPlayer) {
-        this.nameCurrentPlaylist = listOfPlayer.listName;
-        this.setStackSongs(listOfPlayer.listOfSongs);
-        this.currentSong = this.stackOfSongs[0]; // Cambiado a la primera canción en la pila
-        this.audio.src = '';
-        this.updateStack();
-
+        // Escucha click del boton #play y #pause ejecuta metodo play/pause
         let playButton = document.getElementById("play");
+        let pauseButton = document.getElementById("pause");
         playButton.addEventListener('click', () => {
+            playButton.style.display = 'none';
+            pauseButton.style.display = 'inline';
             this.play();
             // Agrega o elimina la clase 'active' según el estado de reproducción
             playButton.classList.toggle('active', !this.audio.paused);
         });
 
+        pauseButton.addEventListener('click', () => {
+        pauseButton.style.display = 'none';
+        playButton.style.display = 'inline';
+        this.pause();
+        });
+        
+
+        // // Escucha click del boton #play y ejecuta metodo play
+        // let playButton = document.getElementById("play");
+        // playButton.addEventListener('click', () => {
+        //     this.play();
+        //     // Agrega o elimina la clase 'active' según el estado de reproducción
+        //     playButton.classList.toggle('active', !this.audio.paused);
+        // });
+
+        // // Escucha click del boton #pause y ejecuta metodo pause
+        // let pauseButton = document.getElementById("pause");
+        // pauseButton.addEventListener('click', () => {})
+
+        // Escucha click del boton #stop y ejecuta metodo stop
         let stopButton = document.getElementById("stop");
         stopButton.addEventListener('click', () => {
             this.stop();
@@ -165,6 +183,7 @@ class Player {
             playButton.classList.remove('active');
         });
 
+        // Escucha click del boton #mute y ejecuta metodo mute
         let muteButton = document.getElementById("mute");
         muteButton.addEventListener('click', () => {
             this.muteController.toggleMute();
@@ -177,6 +196,14 @@ class Player {
                 playButton.classList.add('active');
             }
         });
+    }
+
+    updateStackOfSongs(listOfPlayer) {
+        this.nameCurrentPlaylist = listOfPlayer.listName;
+        this.setStackSongs(listOfPlayer.listOfSongs);
+        this.currentSong = this.stackOfSongs[0]; // Cambiado a la primera canción en la pila
+        this.audio.src = '';
+        this.updateStack();
 
         // Verifico si existe una canción cargada por defecto para mostrar información en el player
         if (this.currentSong !== undefined) {
@@ -228,9 +255,34 @@ class Player {
     play() {
         if (this.currentSong !== undefined) {
             this.audio.src = "canciones/" + this.currentSong.urlSong;
+            this.audio.currentTime = this.currentSongTime;
             this.audio.play();
+
+        } 
+        // else {
+        //     switch(this.nameCurrentPlaylist) {
+        //         case 'MyPlaylist':
+        //         this.audio.src = "canciones/" + this.currentSong.urlSong;   
+        //     }
+        // }
+    }
+
+    pause() {
+        if (!this.audio.paused) {
+            this.audio.pause();
+            this.currentSongTime = this.audio.currentTime;
         }
     }
+
+    stop() {
+    // Verifica si el audio no está pausado.
+    if (!this.audio.paused) {
+        // Si el audio no está pausado, lo pausa.
+        this.audio.pause();
+        // Restablece el tiempo de reproducción a cero.
+        this.audio.currentTime = 0;
+    }
+}
 }
 
 // Método para mutear canción actual al dar clic al botón #mute
