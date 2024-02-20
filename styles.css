@@ -123,6 +123,7 @@ div.SearchResultsList {
     padding: 0;
     border-radius: 10px;
     border-width: 5px;
+    height: 115px;
     border-style: groove;
     border-color: gray;
     overflow-y: scroll;
@@ -205,6 +206,7 @@ div.MyPlaylistdiv {
     border-style: groove;
     border-color: gray;
     overflow-y: scroll;
+    height: 115px;
 }
 
 .li_MyPlaylist_Group {
@@ -269,6 +271,9 @@ div.MyPlaylistdiv {
     color: #fff;
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #cover {
@@ -279,15 +284,25 @@ div.MyPlaylistdiv {
     margin: 0 auto;
 }
 
-#infoSong {
+#detailsSong{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.infoSong {
     margin-top: 10px;
 }
 
-#infoSong label {
+.infoSong label {
     display: block;
     margin-bottom: 10px;
+    text-align: justify;
 }
-
+.infoSong#detailsPerSong{
+    color: #e67409;
+    margin-left: 10px;
+    text-align: justify;
+}
 #controls {
     display: flex;
     justify-content: center;
@@ -363,6 +378,7 @@ div.favList{
     padding: 0;
     border-radius: 10px;
     border-width: 5px;
+    height: 115px;
     border-style: groove;
     border-color: gray;
     overflow-y:scroll;
