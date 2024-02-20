@@ -413,3 +413,22 @@ div.favListdiv {
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
 }
+
+#mute #play{
+    background-color: #000000;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#mute:hover, #mute.active {
+    color: #00eaff;
+}
+
+
+#play:hover, #play.active {
+    color: #00eaff;
+}

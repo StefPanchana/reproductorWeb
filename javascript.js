@@ -135,10 +135,11 @@ class Playlist{
 class Player {
     currentSong;
     nameCurrentPlaylist;
-    stackOfSongs= [];
+    stackOfSongs = [];
     audio;
-    play;
+    muteController;
 
+<<<<<<< HEAD
      constructor() {
          this.audio = new Audio();
 
@@ -164,34 +165,92 @@ class Player {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setstackSongs(listOfPlayer.listOfSongs);
         this.currentSong = (this.stackOfSongs)[28];
+=======
+    constructor() {
+        this.audio = new Audio();
+        this.muteController = new MuteController(this.audio);
+    }
 
-        //Verifico si existe una cancion cargada por defecto para mostrar informacion en el player
-        if (this.currentSong != null) {
+    updateStackOfSongs(listOfPlayer) {
+        this.nameCurrentPlaylist = listOfPlayer.listName;
+        this.setStackSongs(listOfPlayer.listOfSongs);
+        this.currentSong = this.stackOfSongs[0]; // Cambiado a la primera canción en la pila
+        this.audio.src = '';
+        this.updateStack();
+
+        let playButton = document.getElementById("play");
+        playButton.addEventListener('click', () => {
+            this.play();
+            // Agrega o elimina la clase 'active' según el estado de reproducción
+            playButton.classList.toggle('active', !this.audio.paused);
+        });
+>>>>>>> c7e78a3 (cambio boton play, mute y stop con estilos y funciones)
+
+        let stopButton = document.getElementById("stop");
+        stopButton.addEventListener('click', () => {
+            this.stop();
+            // Asegúrate de que el botón de play esté desactivado al detener la reproducción
+            playButton.classList.remove('active');
+        });
+
+        let muteButton = document.getElementById("mute");
+        muteButton.addEventListener('click', () => {
+            this.muteController.toggleMute();
+            // Agrega o elimina la clase 'active' según el estado de mute
+            muteButton.classList.toggle('active', this.audio.muted);
+
+            if (this.audio.muted) {
+                playButton.classList.remove('active');
+            } else {
+                playButton.classList.add('active');
+            }
+        });
+
+        // Verifico si existe una canción cargada por defecto para mostrar información en el player
+        if (this.currentSong !== undefined) {
             this.updateCurrentSong(this.currentSong);
         }
     }
 
-    setstackSongs = function(listofsongs)
-    {
-        //Limpio la cola de reproduccion actual
-        if (this.stackOfSongs.length > 0)
-        {
-            this.stackOfSongs = [];
-        }
+    setStackSongs(listOfSongs) {
+        // Limpio la cola de reproducción actual
+        this.stackOfSongs = [];
 
-        //Recorro la lista para llenar la pila de cola de canciones para reproducir
-        for (let i = 0; i < listofsongs.length; i++)
-        {
-            this.stackOfSongs.push(listofsongs[i]);
+        // Recorro la lista para llenar la pila de cola de canciones para reproducir
+        for (let i = 0; i < listOfSongs.length; i++) {
+            this.stackOfSongs.push(listOfSongs[i]);
         }
     }
 
+<<<<<<< HEAD
     updateCurrentSong = function(song)
     {
         //Actualizacion del Cover de la cancion seleccionada
+=======
+    updateStack() {
+        let listContainer = document.getElementById("myplayer");
+        listContainer.innerHTML = ''; // Clear the list container
+
+        this.stackOfSongs.forEach(stackOfSong => {
+            let listItem = document.createElement("li");
+            listItem.className = "li_MyPlaylist_Group";
+            listItem.textContent = stackOfSong.getNameAndAuthorOfSong();
+
+            let iconsDiv = document.createElement("div");
+            iconsDiv.className = "li_MyPlaylist_Group";
+            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
+
+            listItem.appendChild(iconsDiv);
+            listContainer.appendChild(listItem);
+        });
+    }
+
+    updateCurrentSong(song) {
+        // Actualización del Cover de la canción seleccionada
+>>>>>>> c7e78a3 (cambio boton play, mute y stop con estilos y funciones)
         document.getElementById("cover").src = "./caratulas/" + song.cover;
 
-        //Actualizacion de los detalles de la cancion en los labels
+        // Actualización de los detalles de la canción en los labels
         document.getElementById("nameSong").textContent = song.name;
         document.getElementById("authorSong").textContent = song.author;
         document.getElementById("yearSong").textContent = song.year;
@@ -199,13 +258,28 @@ class Player {
         document.getElementById("durationSong").textContent = song.duration;
     }
 
-    //Metodo para reproducir cancion actual al dar click al boton #play
-     play = function() {
-        if (this.currentSong !== undefined){
-            this.audio.src = "canciones/"+this.currentSong.urlSong;
+    // Método para reproducir canción actual al dar clic al botón #play
+    play() {
+        if (this.currentSong !== undefined) {
+            this.audio.src = "canciones/" + this.currentSong.urlSong;
             this.audio.play();
         }
     }
+
+    // Método para detener la reproducción al dar clic al botón #stop
+    stop() {
+        this.audio.pause();
+        this.audio.currentTime = 0;
+    }
 }
 
+// Método para mutear canción actual al dar clic al botón #mute
+class MuteController {
+    constructor(audio) {
+        this.audio = audio;
+    }
 
+    toggleMute() {
+        this.audio.muted = !this.audio.muted;
+    }
+}
