@@ -261,6 +261,87 @@ div.MyPlaylistdiv {
     scrollbar-color: #e67409 #000000;
 }
 
+/*Estilos FavList*/
+
+#fav {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.titleFavList {
+    font-size: 20px;
+    color: #aaf30b;
+    margin-left: 15px;
+}
+
+div.favListdiv {
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border-width: 5px;
+    height: 115px;
+    border-style: groove;
+    border-color: gray;
+    overflow-y: scroll;
+}
+
+.li_favslist_Group {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-right: 7px;
+}
+
+.li_favslist_Group button {
+    background-color: #000000;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 17px;
+}
+
+.li_favslist_Group button:hover {
+    color: #aaf30b;
+}
+
+div.titleFavList,
+div.favListdiv,
+ul.myFavs {
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    margin-left: 15px;
+}
+
+li.li_MyFavslist {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.favListdiv {
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    border-width: 5px;
+    border-style: groove;
+    border-color: gray;
+    max-height: 140px;
+    overflow-y: auto;
+    scrollbar-color: #aaf30b #000000;
+}
+
 /*Estilos containerRight*/
 
 #containerRight {
@@ -331,55 +412,4 @@ div.MyPlaylistdiv {
     color: #fff;
     text-align: center;
     font-family: 'Titillium Web', sans-serif;
-}
-
-#fav{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-}
-
-ul.myfavs{
-   margin: 0;
-   margin-left: 10px;
-   padding: 0;
-}
-
-li.li_favs{
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.li_favgroup{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 4px;
-    margin-right: 10px;
-}
-
-#fav.li.fa{
-    margin: 0 20px 0 0;
-}
-
-div.titleFavList{
-    text-align: justify;
-    margin: 0;
-    margin-left: 10px;
-    padding: 0;
-}
-
-div.favList{
-    margin: 0;
-    padding: 0;
-    border-radius: 10px;
-    border-width: 5px;
-    height: 115px;
-    border-style: groove;
-    border-color: gray;
-    overflow-y:scroll;
 }
