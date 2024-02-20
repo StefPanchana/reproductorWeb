@@ -164,7 +164,7 @@ class Player {
     {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setstackSongs(listOfPlayer.listOfSongs);
-        this.currentSong = (this.stackOfSongs)[0];
+        this.currentSong = (this.stackOfSongs)[28];
         this.updateStack();
         this.audio = new Audio();
         

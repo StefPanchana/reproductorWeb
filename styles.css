@@ -299,7 +299,7 @@ div.MyPlaylistdiv {
     text-align: justify;
 }
 .infoSong#detailsPerSong{
-    color: #e67409;
+    color: #00eaff;
     margin-left: 10px;
     text-align: justify;
 }
@@ -320,7 +320,7 @@ div.MyPlaylistdiv {
 }
 
 #controls button:hover {
-    color: rgb(0, 234, 255);
+    color: #00eaff;
 }
 
 #containerLeft {
