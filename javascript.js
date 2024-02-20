@@ -139,33 +139,6 @@ class Player {
     audio;
     muteController;
 
-<<<<<<< HEAD
-     constructor() {
-         this.audio = new Audio();
-
-        /*=================================================================================================================*/
-        //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
-        /*=================================================================================================================*/
-        // this.play();
-        // let play_button = document.getElementById("play");
-        //
-        // play_button.addEventListener('click', () => {
-        //     this.play();
-        // } )
-
-        /* //escucha click de #stop
-        let stop_button = document.getElementById("stop");
-        stop_button.addEventListener('click', () => {
-            this.stop();
-        } ) */
-    }
-
-    updateStackOfSongs = function(listOfPlayer)
-    {
-        this.nameCurrentPlaylist = listOfPlayer.listName;
-        this.setstackSongs(listOfPlayer.listOfSongs);
-        this.currentSong = (this.stackOfSongs)[28];
-=======
     constructor() {
         this.audio = new Audio();
         this.muteController = new MuteController(this.audio);
@@ -184,7 +157,6 @@ class Player {
             // Agrega o elimina la clase 'active' según el estado de reproducción
             playButton.classList.toggle('active', !this.audio.paused);
         });
->>>>>>> c7e78a3 (cambio boton play, mute y stop con estilos y funciones)
 
         let stopButton = document.getElementById("stop");
         stopButton.addEventListener('click', () => {
@@ -222,11 +194,6 @@ class Player {
         }
     }
 
-<<<<<<< HEAD
-    updateCurrentSong = function(song)
-    {
-        //Actualizacion del Cover de la cancion seleccionada
-=======
     updateStack() {
         let listContainer = document.getElementById("myplayer");
         listContainer.innerHTML = ''; // Clear the list container
@@ -247,7 +214,6 @@ class Player {
 
     updateCurrentSong(song) {
         // Actualización del Cover de la canción seleccionada
->>>>>>> c7e78a3 (cambio boton play, mute y stop con estilos y funciones)
         document.getElementById("cover").src = "./caratulas/" + song.cover;
 
         // Actualización de los detalles de la canción en los labels
