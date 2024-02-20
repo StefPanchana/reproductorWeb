@@ -238,7 +238,8 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
+            // iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "${song.id}"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "${song.id}"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "${song.id}"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
