@@ -143,22 +143,22 @@ class Player {
     //     this.currentSong = (this.stackOfSongs)[0];
     //     this.audio = new Audio();
 
-        /*=================================================================================================================*/
-        //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
-        /*=================================================================================================================*/
-        // this.play();
-        // let play_button = document.getElementById("play");
-        //
-        // play_button.addEventListener('click', () => {
-        //     this.play();
-        // } )
+    //     /*=================================================================================================================*/
+    //     //      Verificar porcion de codigo que realiza la reproduccion de las canciones dentro del reproductor
+    //     /*=================================================================================================================*/
+    //     // this.play();
+    //     // let play_button = document.getElementById("play");
+    //     //
+    //     // play_button.addEventListener('click', () => {
+    //     //     this.play();
+    //     // } )
 
-        /* //escucha click de #stop
-        let stop_button = document.getElementById("stop");
-        stop_button.addEventListener('click', () => {
-            this.stop();
-        } ) */
-    }
+    //     // escucha click de #stop
+    //     let stop_button = document.getElementById("stop");
+    //     stop_button.addEventListener('click', () => {
+    //         this.stop();
+    //     } ) 
+    // }
 
     updateStackOfSongs = function(listOfPlayer)
     {
@@ -233,6 +233,7 @@ class Player {
             this.audio.play();
         }
     }
+    
 }
 
 
