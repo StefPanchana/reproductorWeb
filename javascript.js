@@ -144,6 +144,17 @@ class Player {
         this.audio = new Audio();
         this.muteController = new MuteController(this.audio);
         this.currentSongTime = 0;
+        // Define el índice de la canción actual
+        this.currentIndex = 0;
+        // Define la canción actual basada en el índice
+        this.currentSong = this.stackOfSongs[this.currentIndex];
+        this.isStopped;
+
+        //Escucha click del boton #previous y ejecuta metoso previous
+        let previousButton = document.getElementById("previous");
+        previousButton.addEventListener('click', () => {
+            this.previous();
+        })
 
         // Escucha click del boton #play y #pause ejecuta metodo play/pause
         let playButton = document.getElementById("play");
@@ -161,19 +172,12 @@ class Player {
         playButton.style.display = 'inline';
         this.pause();
         });
-        
 
-        // // Escucha click del boton #play y ejecuta metodo play
-        // let playButton = document.getElementById("play");
-        // playButton.addEventListener('click', () => {
-        //     this.play();
-        //     // Agrega o elimina la clase 'active' según el estado de reproducción
-        //     playButton.classList.toggle('active', !this.audio.paused);
-        // });
-
-        // // Escucha click del boton #pause y ejecuta metodo pause
-        // let pauseButton = document.getElementById("pause");
-        // pauseButton.addEventListener('click', () => {})
+        //Escucha click del boton #next y ejecuta metodo next
+        let nextButton = document.getElementById("next");
+        nextButton.addEventListener('click', () => {
+            this.next();
+        })
 
         // Escucha click del boton #stop y ejecuta metodo stop
         let stopButton = document.getElementById("stop");
@@ -253,6 +257,23 @@ class Player {
         document.getElementById("durationSong").textContent = song.duration;
     }
 
+    //Metodo para retroceder una cancion
+
+    previous() {
+                // Verifica si hay canciones anteriores en la lista
+        if (this.currentIndex > 0) {
+            // Disminuye el índice para retroceder a la canción anterior
+            this.currentIndex--;
+            // Actualiza la canción actual basada en el nuevo índice
+            this.currentSong = this.stackOfSongs[this.currentIndex];
+            // Reproduce la nueva canción
+            this.play();
+        } else {
+            // No hay canciones anteriores, muestra un mensaje o maneja la situación según sea necesario
+            alert("No hay canciones anteriores en la lista.");
+    }
+    }
+
     // Método para reproducir canción actual al dar clic al botón #play
     play() {
         if (this.currentSong !== undefined) {
@@ -280,6 +301,21 @@ class Player {
         }
     }
 
+    next() {
+    // Verifica si hay canciones siguientes en la lista
+        if (this.currentIndex < this.stackOfSongs.length - 1) {
+            // Aumenta el índice para avanzar a la siguiente canción
+            this.currentIndex++;
+            // Actualiza la canción actual basada en el nuevo índice
+            this.currentSong = this.stackOfSongs[this.currentIndex];
+            // Reproduce la nueva canción
+            this.play();
+        } else {
+            // No hay más canciones siguientes, muestra un mensaje o maneja la situación según sea necesario
+            console.log("No hay más canciones siguientes en la lista.");
+        }
+    }
+
     stop() {
     // Verifica si el audio no está pausado.
     if (!this.audio.paused) {
@@ -287,7 +323,7 @@ class Player {
         this.audio.pause();
         // Restablece el tiempo de reproducción a cero.
         this.audio.currentTime = 0;
-        isStopped = true;
+        this.isStopped = true;
         
     }
 }
