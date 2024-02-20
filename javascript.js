@@ -158,7 +158,7 @@ class Player {
         stop_button.addEventListener('click', () => {
             this.stop();
         } ) */
-    }
+    //}
 
     updateStackOfSongs = function(listOfPlayer)
     {
