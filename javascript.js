@@ -178,6 +178,8 @@ class Player {
         // Escucha click del boton #stop y ejecuta metodo stop
         let stopButton = document.getElementById("stop");
         stopButton.addEventListener('click', () => {
+            pauseButton.style.display = 'none';
+            playButton.style.display = 'inline';
             this.stop();
             // Asegúrate de que el botón de play esté desactivado al detener la reproducción
             playButton.classList.remove('active');
@@ -258,7 +260,11 @@ class Player {
             this.audio.currentTime = this.currentSongTime;
             this.audio.play();
 
-        } 
+        } else if (isStopped) {
+            this.audio.currentTime = 0;
+            isStopped = false; // Reinicia la bandera
+            this.audio.play();
+        }
         // else {
         //     switch(this.nameCurrentPlaylist) {
         //         case 'MyPlaylist':
@@ -281,6 +287,8 @@ class Player {
         this.audio.pause();
         // Restablece el tiempo de reproducción a cero.
         this.audio.currentTime = 0;
+        isStopped = true;
+        
     }
 }
 }
