@@ -47,6 +47,27 @@ window.onload = function() {
         new Song("30","One Summer Away", "Joe Hisaishi", "00:04:05", 2001, "Classical", "Spirited Away Soundtrack", "30.jpg","30.mp3"),
     ];
 
+    //Inicialización del contenedor de canciones de la lista de reproduccion por defecto
+    loadingPlaylistDfault = function()
+    {
+        let listContainer = document.getElementById("myplayer");
+
+        listSongsDefault.forEach(song => {
+            let listItem = document.createElement("li");
+            listItem.className = "li_MyPlaylist_Group";
+            listItem.textContent = song.getNameAndAuthorOfSong();
+
+            let iconsDiv = document.createElement("div");
+            iconsDiv.className = "li_MyPlaylist_Group";
+            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
+
+            listItem.appendChild(iconsDiv);
+            listContainer.appendChild(listItem);
+        });
+    }
+
+    this.loadingPlaylistDfault();
+
     //======================================================================================================//
     //                              Instancia de listas de reproducción
     //======================================================================================================//

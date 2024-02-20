@@ -70,6 +70,7 @@ button {
     grid-template-columns: 1fr 3fr;
     gap: 10px;
     font-family: 'Titillium Web', sans-serif;
+    background: linear-gradient(45deg, #ff69b4, #d843af, #e91e63, #ff8c00);
 }
 
 .containerLeft {
@@ -82,17 +83,16 @@ button {
     margin: 0 25px;
 }
 
-#containerLeft {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-}
-
 #mySearch {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
+
+#mySearch__tittle label {
+    font-size: 25px; 
+    color: #f4557a;
+  }
 
 #button__search {
     height: 37px;
@@ -111,6 +111,11 @@ button {
     color: #fff;
     margin: 0;
     padding: 0;
+}
+
+.titleSearchResults {
+    font-size: 20px;
+    color: #e7209e;
 }
 
 div.SearchResultsList {
@@ -188,6 +193,11 @@ div.SearchResultsList {
     padding: 0;
 }
 
+.titleMyPlaylist {
+    font-size: 20px;
+    color: #e67409;
+}
+
 div.MyPlaylistdiv {
     margin: 0;
     padding: 0;
@@ -251,6 +261,87 @@ div.MyPlaylistdiv {
     scrollbar-color: #e67409 #000000;
 }
 
+/*Estilos FavList*/
+
+#fav {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.titleFavList {
+    font-size: 20px;
+    color: #aaf30b;
+    margin-left: 15px;
+}
+
+div.favListdiv {
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    border-width: 5px;
+    height: 115px;
+    border-style: groove;
+    border-color: gray;
+    overflow-y: scroll;
+}
+
+.li_favslist_Group {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-right: 7px;
+}
+
+.li_favslist_Group button {
+    background-color: #000000;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 17px;
+}
+
+.li_favslist_Group button:hover {
+    color: #aaf30b;
+}
+
+div.titleFavList,
+div.favListdiv,
+ul.myFavs {
+    text-align: justify;
+    margin: 0;
+    padding: 0;
+    margin-left: 15px;
+}
+
+li.li_MyFavslist {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+div.favListdiv {
+    margin: 0;
+    padding: 0;
+    border-radius: 8px;
+    border-width: 5px;
+    border-style: groove;
+    border-color: gray;
+    max-height: 140px;
+    overflow-y: auto;
+    scrollbar-color: #aaf30b #000000;
+}
+
 /*Estilos containerRight*/
 
 #containerRight {
@@ -289,7 +380,7 @@ div.MyPlaylistdiv {
     text-align: justify;
 }
 .infoSong#detailsPerSong{
-    color: #e67409;
+    color: #00eaff;
     margin-left: 10px;
     text-align: justify;
 }
@@ -310,7 +401,7 @@ div.MyPlaylistdiv {
 }
 
 #controls button:hover {
-    color: rgb(0, 234, 255);
+    color: #00eaff;
 }
 
 #containerLeft {
@@ -323,53 +414,21 @@ div.MyPlaylistdiv {
     font-family: 'Titillium Web', sans-serif;
 }
 
-#fav{
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+#mute #play{
+    background-color: #000000;
+    border: none;
     color: #fff;
-    margin: 0;
-    padding: 0;
+    padding: 8px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-ul.myfavs{
-   margin: 0;
-   margin-left: 10px;
-   padding: 0;
+#mute:hover, #mute.active {
+    color: #00eaff;
 }
 
-li.li_favs{
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.li_favgroup{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 4px;
-    margin-right: 10px;
-}
 
-#fav.li.fa{
-    margin: 0 20px 0 0;
-}
-
-div.titleFavList{
-    text-align: justify;
-    margin: 0;
-    margin-left: 10px;
-    padding: 0;
-}
-
-div.favList{
-    margin: 0;
-    padding: 0;
-    border-radius: 10px;
-    border-width: 5px;
-    height: 115px;
-    border-style: groove;
-    border-color: gray;
-    overflow-y:scroll;
+#play:hover, #play.active {
+    color: #00eaff;
 }
