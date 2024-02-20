@@ -266,6 +266,8 @@ class Player {
             this.currentIndex--;
             // Actualiza la canción actual basada en el nuevo índice
             this.currentSong = this.stackOfSongs[this.currentIndex];
+            // Actualiza la informacion de la cancion actual en el reproductor
+            this.updateCurrentSong(this.currentSong);
             // Reproduce la nueva canción
             this.play();
         } else {
@@ -308,6 +310,8 @@ class Player {
             this.currentIndex++;
             // Actualiza la canción actual basada en el nuevo índice
             this.currentSong = this.stackOfSongs[this.currentIndex];
+            // Actualiza la informacion de la cancion actual en el reproductor
+            this.updateCurrentSong(this.currentSong);
             // Reproduce la nueva canción
             this.play();
         } else {
