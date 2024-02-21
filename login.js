@@ -6,7 +6,7 @@ function validarFormulario() {
     var usuario = document.getElementById("usuario").value;
     var contrasena = document.getElementById("contrasena").value;
 
-    // Verificar si el usuario y la contraseña coinciden
+    // Verificar si el usuario y la contraseña son correctos
     if (usuario.trim() === "cursos@correo.com" && contrasena.trim() === "curso123") {
         // Redireccionar a la página del reproductor
         window.location.href = "reproductor.html";
