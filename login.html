@@ -12,18 +12,21 @@
         <h1>Ur MusiK</h1>
         <h2>Bienvenido</h2>
         <div id="logginControls">
-            <div>
-                <label for="">Usuario</label>
-                <input type="email" name="" id="" placeholder="Correo electrónico" required>
-            </div>
-            <div>
-                <label for="">Contraseña</label>
-                <input type="password" name="Contraseña" id="" placeholder="Contraseña" required>
-            </div>
-            <div>
-                <button>Iniciar Sesión</button>
-            </div>
+            <form id="loginForm">
+                <div>
+                    <label for="usuario">Usuario</label>
+                    <input type="email" name="usuario" id="usuario" placeholder="Correo electrónico" required>
+                </div>
+                <div>
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" required>
+                </div>
+                <div>
+                    <button type="button" onclick="validarFormulario()">Iniciar Sesión</button>
+                </div>
+            </form>
         </div>
     </div>
+    <script src="login.js"></script>
 </body>
 </html>
