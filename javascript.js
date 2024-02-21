@@ -189,7 +189,7 @@ class Player {
             pauseButton.style.display = 'none';
             playButton.style.display = 'inline';
             this.stop();
-            // Asegúrate de que el botón de play esté desactivado al detener la reproducción
+            // Bbotón de play desactivado al detener la reproducción
             playButton.classList.remove('active');
         });
 
@@ -303,6 +303,7 @@ class Player {
         });
     }
 
+
     updateCurrentSong(song) {
         // Actualización del Cover de la canción seleccionada
         document.getElementById("cover").src = "./caratulas/" + song.cover;
@@ -346,12 +347,6 @@ class Player {
             this.isStopped = false; // Reinicia la bandera
             this.audio.play();
         }
-        // else {
-        //     switch(this.nameCurrentPlaylist) {
-        //         case 'MyPlaylist':
-        //         this.audio.src = "canciones/" + this.currentSong.urlSong;   
-        //     }
-        // }
     }
 
     pause() {

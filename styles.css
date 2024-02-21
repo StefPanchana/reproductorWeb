@@ -361,7 +361,8 @@ div.favListdiv {
     max-width: 375px; 
     max-height: 375px;
     width: 100%; 
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     margin: 0 auto;
 }
 
@@ -414,7 +415,7 @@ div.favListdiv {
     font-family: 'Titillium Web', sans-serif;
 }
 
-#mute #play{
+#mute {
     background-color: #000000;
     border: none;
     color: #fff;
@@ -428,16 +429,6 @@ div.favListdiv {
     color: #00eaff;
 }
 
-
-#play:hover, #play.active {
-    color: #00eaff;
-}
-
 #pause{
     display: none;
 }
-
-/* #pause:hover,
-#pause.active {
-    color: #00eaff;
-} */
