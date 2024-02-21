@@ -3,21 +3,27 @@ let searchControl = document.getElementById("button__search");
 searchControl.addEventListener("click", function () {
     let wordSearch = document.getElementById("labelSearch").value.trim();
 
-    // Validar la entrada
+    // Validar el texto del cajon de busqueda
     if (wordSearch === "") {
-        document.getElementById("mylistofsearch").textContent = "No hay datos para presentar..!";
+        //Si no hay texto en cajon de busqueda llenar de las canciones del catalogo por defecto al reproductor
+        listSearch.updateList(listSongsDefault);
+        playerWeb.updateStackOfSongs(listSearch, 0);
         return;
     }
 
+    //En caso contrario, si existe texto en el cajon de busqueda se procede a actualizar el contenedor de busqueda
     // Eliminar todos los elementos en el listado antes de actualizar con la nueva búsqueda
     document.getElementById("mylistofsearch").textContent = '';
 
     let expression = new RegExp(wordSearch, "i");
 
     let filteredSongs = searchingByFilter(listSongsDefault, expression);
+    listSearch.updateList(filteredSongs);
+
+    //Tomar el index del evento del boton play del li
 
     // Agregar nuevos elementos
-    addItemsOfSearch(filteredSongs);
+    playerWeb.updateStackOfSongs(listSearch, 0);
 });
 
 function searchingByFilter(songs, expression) {
@@ -36,19 +42,3 @@ function searchingByFilter(songs, expression) {
     return Array.from(filters);
 }
 
-function addItemsOfSearch(songs) {
-    let listContainer = document.getElementById("mylistofsearch");
-
-    songs.forEach(song => {
-        let listItem = document.createElement("li");
-        listItem.className = "li_SearchResult_Group";
-        listItem.textContent = `${song.name} - ${song.author}`;
-
-        let iconsDiv = document.createElement("div");
-        iconsDiv.className = "li_SearchResult_Group";
-        iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
-
-        listItem.appendChild(iconsDiv);
-        listContainer.appendChild(listItem);
-    });
-}

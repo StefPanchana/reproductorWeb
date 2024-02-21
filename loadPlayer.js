@@ -1,9 +1,9 @@
 //======================================================================================================//
 //                          Variables generales para el reproductor
 //======================================================================================================//
-let listDefault; //Lista contenedora de todas las canciones del reproductor
-let listSearch; //Lista contenedora de canciones filtradas por busqueda
-let listFav; //Lista contenedora de canciones marcadas como favoritas
+let listPlay; //Lista contenedora de playlist
+let listSearch; //Lista contenedora de busqueda
+let listFav; //Lista contenedora de favoritas
 
 let playerWeb;//Instancia del reproductor Web
 
@@ -47,36 +47,15 @@ window.onload = function() {
         new Song("30","One Summer Away", "Joe Hisaishi", "00:04:05", 2001, "Classical", "Spirited Away Soundtrack", "30.jpg","30.mp3"),
     ];
 
-    //Inicialización del contenedor de canciones de la lista de reproduccion por defecto
-    loadingPlaylistDfault = function()
-    {
-        let listContainer = document.getElementById("myplayer");
-
-        listSongsDefault.forEach(song => {
-            let listItem = document.createElement("li");
-            listItem.className = "li_MyPlaylist_Group";
-            listItem.textContent = song.getNameAndAuthorOfSong();
-
-            let iconsDiv = document.createElement("div");
-            iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-button"><i class="fa-solid fa-play"></i></button><button class="icon-button"><i class="fa-regular fa-heart"></i></button>';
-
-            listItem.appendChild(iconsDiv);
-            listContainer.appendChild(listItem);
-        });
-    }
-
-    this.loadingPlaylistDfault();
-
     //======================================================================================================//
     //                              Instancia de listas de reproducción
     //======================================================================================================//
 
-    //Creación del listado por defecto de canciones del reproductor
-    listDefault = new Playlist("defaultList", listSongsDefault);
-
     //Creación del listado de canciones favoritas de la sesión
-    listSearch = new Playlist("searchList", []);
+    listSearch = new Playlist("searchList", listSongsDefault);
+
+    //Creación del listado por defecto de canciones del reproductor
+    listPlay = new Playlist("playlist", []);
 
     //Creación del listado de canciones filtradas por busqueda de la sesión (se actualizara en base al evento generado del usuario)
     listFav = new Playlist("favList", []);
@@ -85,6 +64,6 @@ window.onload = function() {
     //                              Instancia del Reproductor Web
     //======================================================================================================//
     playerWeb = new Player();
-    playerWeb.updateStackOfSongs(listDefault);
+    playerWeb.updateStackOfSongs(listSearch, 0);
 
 };
