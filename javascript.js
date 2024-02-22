@@ -335,6 +335,7 @@ class Player {
     }
 
 
+
     updateCurrentSong(song) {
         // Actualización del Cover de la canción seleccionada
         document.getElementById("cover").src = "./caratulas/" + song.cover;
