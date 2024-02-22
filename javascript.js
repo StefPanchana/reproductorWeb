@@ -142,6 +142,7 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
+    lastActive; 
     
 
     constructor() {
@@ -154,7 +155,7 @@ class Player {
         this.currentSong = this.stackOfSongs[this.currentIndex];
         this.isStopped = false;
 
-        //Escucha click del boton #previous y ejecuta metoso previous
+        //Escucha click del boton #previous y ejecuta metodo previous
         let previousButton = document.getElementById("previous");
         previousButton.addEventListener('click', () => {
             this.previous();
@@ -262,8 +263,22 @@ class Player {
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
+
+            let iconPlaySong = document.getElementsByClassName("icon-playSong");
+            Array.from(iconPlaySong).forEach(button => {
+                button.addEventListener('click', function() {
+                    this.nameCurrentPlaylist = 'mylistofsearch';
+                    let id = button.getAttribute('data-idSong');
+                    this.currentSong = this.stackOfSongs.find(song => song.idSong == id);
+                    console.log(this.currentSong)
+                    this.play();
+                }.bind(this)); 
+            });
+
         });
     }
+
+
 
     //Carga de canciones en contenedor de Playlist
     updateStackPlaylist() {
@@ -302,6 +317,7 @@ class Player {
             listContainer.appendChild(listItem);
         });
     }
+
 
 
     updateCurrentSong(song) {
@@ -346,7 +362,10 @@ class Player {
             this.audio.currentTime = 0;
             this.isStopped = false; // Reinicia la bandera
             this.audio.play();
-        }
+        } 
+        // else if (this.currentSong == undefined ) {
+        //     console.log("undefined")
+        // }
     }
 
     pause() {
