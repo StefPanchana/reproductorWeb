@@ -373,15 +373,13 @@ div.favListdiv {
     align-items: center;
 }
 
-#cover{
+#cover {
     width: 375px;
     height: 375px;
     object-fit: cover;
-    position: relative;
-}
-
-#cover{
+    margin: 0 auto;
     z-index: 2;
+    position: relative;
 }
 
 #backgroundImage {
