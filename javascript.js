@@ -410,6 +410,10 @@ class Player {
 
         for (let i = 0; i < playsongsContainerSearch.length; i++) {
             playsongsContainerSearch[i].addEventListener('click', () => {
+                let playButton = document.getElementById("play");
+                let pauseButton = document.getElementById("pause");
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'inline';
                 if (playerWeb.nameCurrentPlaylist != "searchList")
                     playerWeb.nameCurrentPlaylist = "searchList";
                 playerWeb.setStackSongs(listSearch.listOfSongs);
@@ -434,6 +438,10 @@ class Player {
 
         for (let i = 0; i < playsongsContainerPlaylist.length; i++) {
             playsongsContainerPlaylist[i].addEventListener('click', () => {
+                let playButton = document.getElementById("play");
+                let pauseButton = document.getElementById("pause");
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'inline';
                 if (playerWeb.nameCurrentPlaylist != "playlist")
                     playerWeb.nameCurrentPlaylist = "playlist";
                 playerWeb.setStackSongs(listPlay.listOfSongs);
