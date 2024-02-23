@@ -283,50 +283,6 @@ class Player {
         this.addeventstobuttonheartcontainersearch();
     }
 
-    //Carga de canciones en contenedor de Playlist
-    updateStackPlaylist() {
-        let listContainer = document.getElementById("myplayer");
-        listContainer.innerHTML = ''; // Clear the list container
-
-        this.stackOfSongs.forEach(stackOfSong => {
-            let listItem = document.createElement("li");
-            listItem.className = "li_MyPlaylist_Group";
-            listItem.textContent = stackOfSong.getNameAndAuthorOfSong();
-
-            let iconsDiv = document.createElement("div");
-            iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
-
-            listItem.appendChild(iconsDiv);
-            listContainer.appendChild(listItem);
-        });
-
-        //Agrego eventos al boton Play
-        this.addeventstobuttonplay();
-    }
-
-    //Carga de canciones en contenedor de Favoritos
-    updateStackFav() {
-        let listContainer = document.getElementById("myFavs");
-        listContainer.innerHTML = ''; // Clear the list container
-
-        this.stackOfSongs.forEach(stackOfSong => {
-            let listItem = document.createElement("li");
-            listItem.className = "li_favslist_Group";
-            listItem.textContent = stackOfSong.getNameAndAuthorOfSong();
-
-            let iconsDiv = document.createElement("div");
-            iconsDiv.className = "li_favslist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
-
-            listItem.appendChild(iconsDiv);
-            listContainer.appendChild(listItem);
-        });
-
-        //Agrego eventos al boton Play
-        //this.addeventstobuttonplay();
-    }
-
     updateCurrentSong(song) {
         // Actualización del Cover de la canción seleccionada
         document.getElementById("cover").src = "./caratulas/" + song.cover;
@@ -461,6 +417,34 @@ class Player {
         }
     }
 
+    addeventstobuttonplayformyfavs = function (){
+        //AddListener a botones individualmente
+        let containermyfavs = document.getElementById("myFavs");
+        let playsongsContainerMyFavs = containermyfavs.getElementsByClassName("icon-playSong-s");
+
+        for (let i = 0; i < playsongsContainerMyFavs.length; i++) {
+            playsongsContainerMyFavs[i].addEventListener('click', () => {
+                let playButton = document.getElementById("play");
+                let pauseButton = document.getElementById("pause");
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'inline';
+                if (playerWeb.nameCurrentPlaylist != "favList")
+                    playerWeb.nameCurrentPlaylist = "favList";
+                playerWeb.setStackSongs(listFav.listOfSongs);
+
+                let id = playsongsContainerMyFavs[i].getAttribute('data-idSong');
+                let song = this.stackOfSongs.find(s => s.idSong === id);
+                this.currentIndex = i;
+                this.currentSong = song; // Cambiado a la primera canción en la pila
+                if (this.currentSong !== undefined) {
+                    this.updateCurrentSong(this.currentSong);
+                    this.stop();
+                    this.play();
+                }
+            })
+        }
+    }
+
     addeventstobuttonplus = function () {
         let playsongsContainerplaylist = document.getElementsByClassName("icon-addPlaylist-s");
 
@@ -479,6 +463,23 @@ class Player {
         }
     }
 
+    addeventstobuttonplusMyFavs = function () {
+        let playsongsContainerfavs = document.getElementsByClassName("icon-favs-s");
+        for (let i = 0; i < playsongsContainerfavs.length; i++) {
+            playsongsContainerfavs[i].addEventListener('click', () => {
+                let id = playsongsContainerfavs[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listFav.addSong(song);
+                this.refreshSongsByEventFavs();
+
+                if (playerWeb.nameCurrentPlaylist === listFav.listName)
+                {
+                    this.addSongstoStack(song);
+                }
+            })
+        }
+    }
+
     addeventstobuttonheartcontainersearch = function () {
         let containerSearch = document.getElementById("mylistofsearch");
         let heartSongContainerSearch = containerSearch.getElementsByClassName("icon-favs-s");
@@ -489,7 +490,26 @@ class Player {
                 let song = listSongsDefault.find(s => s.idSong === id);
                 listFav.addSong(song);
                 this.refreshSongsByEventFavs();
-                this.updateHeartButtonContainerSearch(song);
+                this.updateHeartButtonContainerDynamic(song, "myFavs", true);
+                this.updateHeartButtonContainerDynamic(song, "myplayer", true);
+                this.updateHeartButtonContainerDynamic(song, "mylistofsearch", true);
+            })
+        }
+    }
+
+    addeventstobuttonheartcontainerplaylist = function () {
+        let containerPLayList = document.getElementById("myplayer");
+        let heartSongContainerPlaylist = containerPLayList.getElementsByClassName("icon-favs-s");
+
+        for (let i = 0; i < heartSongContainerPlaylist.length; i++) {
+            heartSongContainerPlaylist[i].addEventListener('click', () => {
+                let id = heartSongContainerPlaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listFav.addSong(song);
+                this.refreshSongsByEventFavs();
+                this.updateHeartButtonContainerDynamic(song, "myFavs", true);
+                this.updateHeartButtonContainerDynamic(song, "myplayer", true);
+                this.updateHeartButtonContainerDynamic(song, "mylistofsearch", true);
             })
         }
     }
@@ -506,6 +526,28 @@ class Player {
                 this.refreshSongsListByEventMyPlayList();
 
                 if (playerWeb.nameCurrentPlaylist === listPlay.listName)
+                {
+                    this.deleteSongstoStack(song);
+                }
+
+            })
+        }
+    }
+
+    addeventstobuttonDeleteheart = function () {
+        // let deletesongsContainerplaylist = document.getElementsByClassName("icon-removePlaylist-s");
+        let ccontainerPLayList = document.getElementById("myFavs");
+        let deletesongsContainerplaylist = ccontainerPLayList.getElementsByClassName("icon-removePlaylist-s");
+        for (let i = 0; i < deletesongsContainerplaylist.length; i++) {
+            deletesongsContainerplaylist[i].addEventListener('click', () => {
+                let id = deletesongsContainerplaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listFav.removeSong(song);
+                this.refreshSongsByEventFavs();
+                this.updateHeartButtonContainerDynamic(song, "myplayer", false);
+                this.updateHeartButtonContainerDynamic(song, "mylistofsearch", false);
+
+                if (playerWeb.nameCurrentPlaylist === listFav.listName)
                 {
                     this.deleteSongstoStack(song);
                 }
@@ -533,6 +575,7 @@ class Player {
 
         this.addeventstobuttonplayformyplaylist();
         this.addeventstobuttonDelete();
+        this.addeventstobuttonheartcontainerplaylist();
     }
 
     refreshSongsByEventFavs() {
@@ -546,26 +589,35 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_favslist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stack.idSong + '"><i class="fa-solid fa-heart"></i></button><button class="icon-removePlaylist-s" data-idSong = "' + stack.idSong + '"><i class="fa-regular fa fa-minus"></i></button><button class="icon-playSong-s" data-idSong = "' + stack.idSong + '"><i class="fa-solid fa-play"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stack.idSong + '"><i class="fa-solid fa-heart"></i></button><button class="icon-removePlaylist-s" data-idSong = "' + stack.idSong + '"><i class="fa-trash-alt fa"></i></button><button class="icon-playSong-s" data-idSong = "' + stack.idSong + '"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
         });
 
-        //this.addeventstobuttonplayformyplaylist();
+        this.addeventstobuttonplusMyFavs();
+        this.addeventstobuttonDeleteheart();
+        this.addeventstobuttonplayformyfavs();
     }
 
-    updateHeartButtonContainerSearch(song) {
-        let containerSearch = document.getElementById("mylistofsearch");
+    updateHeartButtonContainerDynamic(song, component, state) {
+        let containerSearch = document.getElementById(component);
         let heartSongContainerSearch = containerSearch.getElementsByClassName("icon-favs-s");
 
         for (let i = 0; i < heartSongContainerSearch.length; i++) {
             let id = heartSongContainerSearch[i].getAttribute('data-idSong');
 
             if (id === song.idSong)
-                heartSongContainerSearch[i].innerHTML = '<i class="fa-solid fa-heart"></i>';
+            {
+                if (state)
+                    heartSongContainerSearch[i].innerHTML = '<i class="fa-solid fa-heart"></i>';
+                else
+                    heartSongContainerSearch[i].innerHTML = '<i class="fa-regular fa-heart"></i>';
+            }
+                
         }
     }
+    
 }
 
 // Método para mutear canción actual al dar clic al botón #mute
