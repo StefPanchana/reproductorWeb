@@ -358,7 +358,12 @@ class Player {
             this.audio.currentTime = this.currentSongTime;
             this.audio.play();
 
-        } else if (this.isStopped) {
+        }else if (this.currentSong !== undefined && this.isStopped) {
+            this.audio.src = "canciones/" + this.currentSong.urlSong;
+            this.audio.currentTime = 0;
+            this.audio.play();
+        }
+        else if (this.isStopped) {
             this.audio.currentTime = 0;
             this.isStopped = false; // Reinicia la bandera
             this.audio.play();
@@ -404,13 +409,17 @@ class Player {
 
         for (let i = 0; i < playsongsContainerSearch.length; i++) {
             playsongsContainerSearch[i].addEventListener('click', () => {
+                if (playerWeb.nameCurrentPlaylist != "searchList")
+                    playerWeb.nameCurrentPlaylist = "searchList";
+                playerWeb.setStackSongs(listSearch.listOfSongs);
+
                 let id = playsongsContainerSearch[i].getAttribute('data-idSong');
                 let song = this.stackOfSongs.find(s => s.idSong === id);
                 this.currentIndex = i;
                 this.currentSong = song; // Cambiado a la primera canción en la pila
                 if (this.currentSong !== undefined) {
                     this.updateCurrentSong(this.currentSong);
-                    this.pause();
+                    this.stop();
                     this.play();
                 }
             })
@@ -434,7 +443,7 @@ class Player {
                 this.currentSong = song; // Cambiado a la primera canción en la pila
                 if (this.currentSong !== undefined) {
                     this.updateCurrentSong(this.currentSong);
-                    this.pause();
+                    this.stop();
                     this.play();
                 }
             })
