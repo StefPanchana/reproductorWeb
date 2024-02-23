@@ -257,6 +257,7 @@ ul.MyPlaylist {
     margin-left: 15px;
     padding: 0;
 }
+
 li.li_MyPlaylist {
     list-style-type: none;
     display: flex;
@@ -290,7 +291,6 @@ div.MyPlaylistdiv {
 .titleFavList {
     font-size: 20px;
     color: #aaf30b;
-    margin-left: 15px;
 }
 
 div.favListdiv {
@@ -298,10 +298,10 @@ div.favListdiv {
     padding: 0;
     border-radius: 10px;
     border-width: 5px;
-    height: 115px;
     border-style: groove;
     border-color: gray;
     overflow-y: scroll;
+    height: 115px;
 }
 
 .li_favslist_Group {
@@ -334,8 +334,8 @@ div.favListdiv,
 ul.myFavs {
     text-align: justify;
     margin: 0;
-    padding: 0;
     margin-left: 15px;
+    padding: 0;
 }
 
 li.li_MyFavslist {
