@@ -9,5 +9,3 @@ Stefania Panchana
 Laura Vargas
 Sofia Macias
 Denise Bergmann
-
-prueba

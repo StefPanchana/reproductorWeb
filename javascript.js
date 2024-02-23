@@ -462,7 +462,6 @@ class Player {
                 let id = playsongsContainerfavs[i].getAttribute('data-idSong');
                 let song = listSongsDefault.find(s => s.idSong === id);
                 listFav.addSong(song);
-                this.refreshSongsByEventFavs();
 
                 if (playerWeb.nameCurrentPlaylist === listFav.listName)
                 {
@@ -535,7 +534,6 @@ class Player {
                 let id = deletesongsContainerplaylist[i].getAttribute('data-idSong');
                 let song = listSongsDefault.find(s => s.idSong === id);
                 listFav.removeSong(song);
-                this.refreshSongsByEventFavs();
                 this.updateHeartButtonContainerDynamic(song, "myplayer", false);
                 this.updateHeartButtonContainerDynamic(song, "mylistofsearch", false);
 
@@ -587,7 +585,6 @@ class Player {
             listContainer.appendChild(listItem);
         });
 
-        this.addeventstobuttonplusMyFavs();
         this.addeventstobuttonDeleteheart();
         this.addeventstobuttonplayformyfavs();
     }
