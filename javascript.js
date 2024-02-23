@@ -247,6 +247,10 @@ class Player {
         this.stackOfSongs.push(song);
     }
 
+    deleteSongstoStack(song) {
+        this.stackOfSongs.shift(song);
+    }
+
     //Carga de canciones en contenedor de busqueda
     updateStackSearchList() {
         let listContainer = document.getElementById("mylistofsearch");
@@ -350,6 +354,7 @@ class Player {
     play() {
         if (this.currentSong !== undefined && this.isStopped === false) {
             this.audio.src = "canciones/" + this.currentSong.urlSong;
+            this.updateCurrentSong(this.currentSong);
             this.audio.currentTime = this.currentSongTime;
             this.audio.play();
 
@@ -380,7 +385,7 @@ class Player {
             this.play();
         } else {
             // No hay más canciones siguientes, muestra un mensaje o maneja la situación según sea necesario
-            console.log("No hay más canciones siguientes en la lista.");
+            alert("No hay más canciones siguientes en la lista.");
         }
     }
 
@@ -450,10 +455,31 @@ class Player {
                 {
                     this.addSongstoStack(song);
                 }
-                else
+                //revisar no permite reproducir cancion en lista de busqueda si se le da click al mas 
+                // else
+                // {
+                //     this.setStackSongs(listPlay.listOfSongs);
+                // }
+            })
+        }
+    }
+
+        addeventstobuttonDelete = function () {
+        // let deletesongsContainerplaylist = document.getElementsByClassName("icon-removePlaylist-s");
+        let ccontainerPLayList = document.getElementById("myplayer");
+        let deletesongsContainerplaylist = ccontainerPLayList.getElementsByClassName("icon-removePlaylist-s");
+        for (let i = 0; i < deletesongsContainerplaylist.length; i++) {
+            deletesongsContainerplaylist[i].addEventListener('click', () => {
+                let id = deletesongsContainerplaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listPlay.removeSong(song);
+                this.refreshSongsListByEventMyPlayList();
+
+                if (playerWeb.nameCurrentPlaylist === listPlay.listName)
                 {
-                    this.setStackSongs(listPlay.listOfSongs);
+                    this.deleteSongstoStack(song);
                 }
+
             })
         }
     }
@@ -469,7 +495,7 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-removePlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-minus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-removePlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-trash-alt fa"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
@@ -477,6 +503,8 @@ class Player {
 
         this.addeventstobuttonplayformyplaylist();
     }
+
+    
 }
 
 // Método para mutear canción actual al dar clic al botón #mute
