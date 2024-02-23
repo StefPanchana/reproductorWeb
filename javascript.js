@@ -544,7 +544,7 @@ class MuteController {
 /*Función para cambiar el cover por la imagen predeterminada cuando no hay contenido*/
 /*=================================================================================================================*/
 
-document.addEventListener("DOMContentLoaded", function() {
+/* document.addEventListener("DOMContentLoaded", function() {
     var cover = document.getElementById("cover"); // Agregado para obtener la referencia al cover
     var imagenPredeterminada = document.getElementById("imagenPredeterminada");
 
@@ -576,5 +576,5 @@ document.addEventListener("DOMContentLoaded", function() {
     cover.addEventListener("error", function() {
         mostrarImagenPredeterminada();
     });
-});
+}); */
 
