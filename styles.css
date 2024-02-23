@@ -314,7 +314,7 @@ div.favListdiv {
     margin-right: 7px;
 }
 
-.li_MyFavslist_Group button {
+.li_favslist_Group button {
     background-color: #1e1e1e;
     border: none;
     color: #fff;
@@ -325,7 +325,7 @@ div.favListdiv {
     font-size: 17px;
 }
 
-.li_MyFavslist_Group button:hover {
+.li_favslist_Group button:hover {
     color: #aaf30b;
 }
 
