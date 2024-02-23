@@ -339,24 +339,6 @@ class Player {
         document.getElementById("durationSong").textContent = song.duration;
     }
 
-    //Metodo para retroceder una cancion
-    previous() {
-                // Verifica si hay canciones anteriores en la lista
-        if (this.currentIndex > 0) {
-            // Disminuye el índice para retroceder a la canción anterior
-            this.currentIndex--;
-            // Actualiza la canción actual basada en el nuevo índice
-            this.currentSong = this.stackOfSongs[this.currentIndex];
-            // Actualiza la informacion de la cancion actual en el reproductor
-            this.updateCurrentSong(this.currentSong);
-            // Reproduce la nueva canción
-            this.play();
-        } else {
-            // No hay canciones anteriores, muestra un mensaje o maneja la situación según sea necesario
-            alert("No hay canciones anteriores en la lista.");
-    }
-    }
-
     // Método para reproducir canción actual al dar clic al botón #play
     play() {
         if (this.currentSong !== undefined && this.isStopped === false) {
@@ -388,10 +370,21 @@ class Player {
         if (this.currentIndex < this.stackOfSongs.length - 1) {
             this.currentIndex++;
         } else {
-            // No hay más canciones siguientes, muestra un mensaje o maneja la situación según sea necesario
-            alert("No hay más canciones siguientes en la lista.");
+            this.currentIndex = 0;
         }
 
+        this.currentSong = this.stackOfSongs[this.currentIndex];
+        this.updateCurrentSong(this.currentSong);
+        this.play();
+    }
+
+    previous() {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+        } else {
+            this.currentIndex = this.stackOfSongs.length - 1;
+        }
+    
         this.currentSong = this.stackOfSongs[this.currentIndex];
         this.updateCurrentSong(this.currentSong);
         this.play();
@@ -401,7 +394,6 @@ class Player {
     // Verifica si el audio no está pausado.
         // Si el audio no está pausado, lo pausa.
         this.audio.pause();
-        // Restablece el tiempo de reproducción a cero.
         this.audio.currentTime = 0;
         this.isStopped = true;
     }
