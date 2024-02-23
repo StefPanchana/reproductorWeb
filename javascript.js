@@ -142,6 +142,7 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
+    currentIndex;
     lastActive; 
     
 
