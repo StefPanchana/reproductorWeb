@@ -118,12 +118,12 @@ class Playlist{
         this.listOfSongs = listOfSongs;
     }
 
-    set addSong(song)
+    addSong(song)
     {
         this.listOfSongs.push(song);
     }
 
-    set removeSong(song)
+    removeSong(song)
     {
         this.listOfSongs.filter(s => s !== song);
     }
@@ -210,31 +210,28 @@ class Player {
         });
     }
 
-    updateStackOfSongs(listOfPlayer, indexSong) {
+    updateStackOfSongs(listOfPlayer, indexSong, updatehtml) {
         this.nameCurrentPlaylist = listOfPlayer.listName;
         this.setStackSongs(listOfPlayer.listOfSongs);
         this.currentIndex = indexSong;
         this.currentSong = this.stackOfSongs[this.currentIndex]; // Cambiado a la primera canción en la pila
         this.audio.src = '';
 
-        //Actualizacion de HTML
-        switch (this.nameCurrentPlaylist) {
-            case 'playlist':
-                this.updateStackPlaylist();
-                break;
-            case 'searchList':
-                this.updateStackSearchList();
-                break;
-            case 'favList':
-                this.updateStackFav();
-                break;
-            default:
-                break;
-        }
-
-        // Verifico si existe una canción cargada por defecto para mostrar información en el player
-        if (this.currentSong !== undefined) {
-            this.updateCurrentSong(this.currentSong);
+        if (updatehtml) {
+            //Actualizacion de HTML
+            switch (this.nameCurrentPlaylist) {
+                case 'playlist':
+                    this.updateStackPlaylist();
+                    break;
+                case 'searchList':
+                    this.updateStackSearchList();
+                    break;
+                case 'favList':
+                    this.updateStackFav();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -246,6 +243,10 @@ class Player {
         for (let i = 0; i < listOfSongs.length; i++) {
             this.stackOfSongs.push(listOfSongs[i]);
         }
+    }
+
+    addSongstoStack(song) {
+        this.stackOfSongs.push(song);
     }
 
     //Carga de canciones en contenedor de busqueda
@@ -260,7 +261,7 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_SearchResult_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs"  data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" id="songButton' + stackOfSong.idSong + '" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
@@ -268,6 +269,12 @@ class Player {
             
 
         });
+
+        //Agrego eventos al boton Play
+        this.addeventstobuttonplay();
+
+        //Agrego evento al boton Add
+        this.addeventstobuttonplus();
     }
 
 
@@ -284,11 +291,14 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_MyPlaylist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
         });
+
+        //Agrego eventos al boton Play
+        this.addeventstobuttonplay();
     }
 
     //Carga de canciones en contenedor de Favoritos
@@ -303,13 +313,15 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_favslist_Group";
-            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
         });
-    }
 
+        //Agrego eventos al boton Play
+        this.addeventstobuttonplay();
+    }
 
 
     updateCurrentSong(song) {
@@ -325,7 +337,6 @@ class Player {
     }
 
     //Metodo para retroceder una cancion
-
     previous() {
                 // Verifica si hay canciones anteriores en la lista
         if (this.currentIndex > 0) {
@@ -391,6 +402,91 @@ class Player {
         // Restablece el tiempo de reproducción a cero.
         this.audio.currentTime = 0;
         this.isStopped = true;
+    }
+
+    addeventstobuttonplay = function (){
+        //AddListener a botones individualmente
+        let playsongsContainerSearch = document.getElementsByClassName("icon-playSong-s");
+
+        for (let i = 0; i < playsongsContainerSearch.length; i++) {
+            playsongsContainerSearch[i].addEventListener('click', () => {
+                let id = playsongsContainerSearch[i].getAttribute('data-idSong');
+                let song = this.stackOfSongs.find(s => s.idSong === id);
+                this.currentIndex = i;
+                this.currentSong = song; // Cambiado a la primera canción en la pila
+                if (this.currentSong !== undefined) {
+                    this.updateCurrentSong(this.currentSong);
+                    this.pause();
+                    this.play();
+                }
+            })
+        }
+    }
+
+    addeventstobuttonplayformyplaylist = function (){
+        //AddListener a botones individualmente
+        let containerPLayList = document.getElementById("myplayer");
+        let playsongsContainerPlaylist = containerPLayList.getElementsByClassName("icon-playSong-s");
+
+        for (let i = 0; i < playsongsContainerPlaylist.length; i++) {
+            playsongsContainerPlaylist[i].addEventListener('click', () => {
+                if (playerWeb.nameCurrentPlaylist != "playlist")
+                    playerWeb.nameCurrentPlaylist = "playlist";
+                playerWeb.setStackSongs(listPlay.listOfSongs);
+
+                let id = playsongsContainerPlaylist[i].getAttribute('data-idSong');
+                let song = this.stackOfSongs.find(s => s.idSong === id);
+                this.currentIndex = i;
+                this.currentSong = song; // Cambiado a la primera canción en la pila
+                if (this.currentSong !== undefined) {
+                    this.updateCurrentSong(this.currentSong);
+                    this.pause();
+                    this.play();
+                }
+            })
+        }
+    }
+
+    addeventstobuttonplus = function () {
+        let playsongsContainerplaylist = document.getElementsByClassName("icon-addPlaylist-s");
+
+        for (let i = 0; i < playsongsContainerplaylist.length; i++) {
+            playsongsContainerplaylist[i].addEventListener('click', () => {
+                let id = playsongsContainerplaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listPlay.addSong(song);
+                this.refreshSongsListByEventMyPlayList();
+
+                if (playerWeb.nameCurrentPlaylist === listPlay.listName)
+                {
+                    this.addSongstoStack(song);
+                }
+                else
+                {
+                    this.setStackSongs(listPlay.listOfSongs);
+                }
+            })
+        }
+    }
+
+    refreshSongsListByEventMyPlayList() {
+        let listContainer = document.getElementById("myplayer");
+        listContainer.innerHTML = ''; // Clear the list container
+
+        listPlay.listOfSongs.forEach(stackOfSong => {
+            let listItem = document.createElement("li");
+            listItem.className = "li_MyPlaylist_Group";
+            listItem.textContent = stackOfSong.getNameAndAuthorOfSong();
+
+            let iconsDiv = document.createElement("div");
+            iconsDiv.className = "li_MyPlaylist_Group";
+            iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-removePlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-minus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+
+            listItem.appendChild(iconsDiv);
+            listContainer.appendChild(listItem);
+        });
+
+        this.addeventstobuttonplayformyplaylist();
     }
 }
 
