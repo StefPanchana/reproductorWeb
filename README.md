@@ -8,7 +8,7 @@ Contraseña2: musica10
 
 # integrantes del Grupo
 
-Stefania Panchana
-Laura Vargas
-Sofia Macias
-Denise Bergmann
+Stefania Panchana - stefaniapanchanaj@hotmail.com
+Laura Vargas - lauravargas2009@gmail.com
+Sofia Macias - sofymaciasp@gmail.com
+Denise Bergmann - denichabepa@gmail.com
