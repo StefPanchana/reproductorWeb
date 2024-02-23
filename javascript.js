@@ -260,7 +260,15 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_SearchResult_Group";
+<<<<<<< HEAD
+<<<<<<< HEAD
             iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+=======
+            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+>>>>>>> parent of bbc917e (sin cambios)
+=======
+            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+>>>>>>> parent of bbc917e (sin cambios)
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
