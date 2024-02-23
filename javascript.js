@@ -142,7 +142,6 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
-    currentIndex;
     lastActive; 
     
 
@@ -270,7 +269,16 @@ class Player {
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
 
-            
+            let iconPlaySong = document.getElementsByClassName("icon-playSong");
+            Array.from(iconPlaySong).forEach(button => {
+                button.addEventListener('click', function() {
+                    this.nameCurrentPlaylist = 'mylistofsearch';
+                    let id = button.getAttribute('data-idSong');
+                    this.currentSong = this.stackOfSongs.find(song => song.idSong == id);
+                    console.log(this.currentSong)
+                    this.play();
+                }.bind(this)); 
+            });
 
         });
 
