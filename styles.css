@@ -68,19 +68,34 @@ button {
 .container {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    gap: 10px;
+    gap: 1px;
     font-family: 'Titillium Web', sans-serif;
     background: linear-gradient(45deg, #ff69b4, #d843af, #e91e63, #ff8c00);
+    position: relative;
+}
+
+#logoContainer {
+    grid-column: 1 / span 2;
+    height: 50px;
+    /* top | right | bottom | left */
+    padding: 25px 0 0 25px;
+}
+
+#logoContainer img {
+    height: 100%;
+    width: auto;
 }
 
 .containerLeft {
-    grid-area: 1 / 1 / span 3 / span 1;
-    margin: 0 25px;
+    grid-area: 2 / 1 / span 3 / span 1;
+    margin: 0 5px 25px 25px;
+    position: relative;
 }
 
 .containerRight {
-    grid-area: 1 / 2 / span 3 / span 1;
-    margin: 0 25px;
+    grid-area: 2 / 2 / span 3 / span 1; 
+    margin: 0 25px 25px 5px;
+    position: relative;
 }
 
 #mySearch {
@@ -140,7 +155,7 @@ div.SearchResultsList {
 }
 
 .li_SearchResult_Group button {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 5px;
@@ -179,7 +194,7 @@ div.SearchResultsList {
     border-color: gray;
     max-height: 115px;
     overflow-y: auto;
-    scrollbar-color: #e7209e #000000;
+    scrollbar-color: #e7209e #1e1e1e;
 }
 
 /*Estilos PlayList*/
@@ -220,7 +235,7 @@ div.MyPlaylistdiv {
 }
 
 .li_MyPlaylist_Group button {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 5px;
@@ -258,7 +273,7 @@ div.MyPlaylistdiv {
     border-color: gray;
     max-height: 140px;
     overflow-y: auto;
-    scrollbar-color: #e67409 #000000;
+    scrollbar-color: #e67409 #1e1e1e;
 }
 
 /*Estilos FavList*/
@@ -300,7 +315,7 @@ div.favListdiv {
 }
 
 .li_favslist_Group button {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 5px;
@@ -339,13 +354,13 @@ div.favListdiv {
     border-color: gray;
     max-height: 140px;
     overflow-y: auto;
-    scrollbar-color: #aaf30b #000000;
+    scrollbar-color: #aaf30b #1e1e1e;
 }
 
 /*Estilos containerRight*/
 
 #containerRight {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border-radius: 8px;
     padding: 20px;
     margin-top: 15px;
@@ -354,16 +369,25 @@ div.favListdiv {
     font-family: 'Titillium Web', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-#cover {
+#cover,
+#imagenPredeterminada {
     width: 375px;
     height: 375px;
     object-fit: cover;
-    margin: 0 auto;
-    z-index: 2;
     position: relative;
+}
+
+#cover{
+    z-index: 2;
+}
+
+#imagenPredeterminada {
+    visibility: hidden;
+    z-index: 1;
 }
 
 #backgroundImage {
@@ -373,7 +397,7 @@ div.favListdiv {
     position: absolute;
     top: 10px;
     right: 2%;
-    z-index: 1; 
+    z-index: 0; 
 }
 
 #detailsSong{
@@ -403,7 +427,7 @@ div.favListdiv {
 }
 
 #controls button {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 8px;
@@ -417,7 +441,7 @@ div.favListdiv {
 }
 
 #containerLeft {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border-radius: 8px;
     padding: 5px;
     margin-top: 15px;
@@ -427,7 +451,7 @@ div.favListdiv {
 }
 
 #mute {
-    background-color: #000000;
+    background-color: #1e1e1e;
     border: none;
     color: #fff;
     padding: 8px;

@@ -539,3 +539,42 @@ class MuteController {
         this.audio.muted = !this.audio.muted;
     }
 }
+
+/*=================================================================================================================*/
+/*Función para cambiar el cover por la imagen predeterminada cuando no hay contenido*/
+/*=================================================================================================================*/
+
+document.addEventListener("DOMContentLoaded", function() {
+    var cover = document.getElementById("cover"); // Agregado para obtener la referencia al cover
+    var imagenPredeterminada = document.getElementById("imagenPredeterminada");
+
+    // Función para mostrar la imagen predeterminada y ocultar el cover
+    function mostrarImagenPredeterminada() {
+        cover.style.display = "none";
+        imagenPredeterminada.style.visibility = "visible";
+    }
+
+    // Función para mostrar el cover y ocultar la imagen predeterminada
+    function mostrarImagenDePortada() {
+        cover.style.display = "block";
+        imagenPredeterminada.style.visibility = "hidden";
+    }
+
+    // Verifica el estado de carga de la imagen cuando se ejecuta el evento load en el cover
+    cover.addEventListener("load", function() {
+        mostrarImagenDePortada();
+    });
+
+    // Verifica el estado de carga de la imagen al inicio
+    if (cover.complete && cover.naturalWidth !== 0) {
+        mostrarImagenDePortada();
+    } else {
+        mostrarImagenPredeterminada();
+    }
+
+    // Manejador de eventos para el caso en que la imagen de portada no se carga correctamente
+    cover.addEventListener("error", function() {
+        mostrarImagenPredeterminada();
+    });
+});
+
