@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7c4a1229-3320-4c9d-adad-8cab8ae772bd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/javascript.js" beforeDir="false" afterPath="$PROJECT_DIR$/javascript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loadPlayer.js" beforeDir="false" afterPath="$PROJECT_DIR$/loadPlayer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/playerSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/playerSearch.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +20,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -38,7 +40,7 @@
   &quot;keyToString&quot;: {
     &quot;JavaScript Debug.reproductor.html.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;playerDevSofy&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -53,6 +55,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.reproductor.html" />
+        <item itemvalue="JavaScript Debug.reproductor.html" />
         <item itemvalue="JavaScript Debug.reproductor.html" />
       </list>
     </recent_temporary>
@@ -82,10 +86,24 @@
       <workItem from="1708470319553" duration="7120000" />
       <workItem from="1708478815234" duration="140000" />
       <workItem from="1708478960230" duration="4857000" />
+      <workItem from="1708647653727" duration="9124000" />
+      <workItem from="1708658934979" duration="2970000" />
+      <workItem from="1708663563906" duration="696000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

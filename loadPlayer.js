@@ -64,6 +64,6 @@ window.onload = function() {
     //                              Instancia del Reproductor Web
     //======================================================================================================//
     playerWeb = new Player();
-    playerWeb.updateStackOfSongs(listSearch, 0);
+    playerWeb.updateStackOfSongs(listSearch, 0, true);
 
 };

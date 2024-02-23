@@ -7,7 +7,7 @@ searchControl.addEventListener("click", function () {
     if (wordSearch === "") {
         //Si no hay texto en cajon de busqueda llenar de las canciones del catalogo por defecto al reproductor
         listSearch.updateList(listSongsDefault);
-        playerWeb.updateStackOfSongs(listSearch, 0);
+        playerWeb.updateStackOfSongs(listSearch, 0, true);
         return;
     }
 
@@ -20,10 +20,8 @@ searchControl.addEventListener("click", function () {
     let filteredSongs = searchingByFilter(listSongsDefault, expression);
     listSearch.updateList(filteredSongs);
 
-    //Tomar el index del evento del boton play del li
-
     // Agregar nuevos elementos
-    playerWeb.updateStackOfSongs(listSearch, 0);
+    playerWeb.updateStackOfSongs(listSearch, 0, true);
 });
 
 function searchingByFilter(songs, expression) {
