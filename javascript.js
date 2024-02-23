@@ -404,6 +404,10 @@ class Player {
 
         for (let i = 0; i < playsongsContainerSearch.length; i++) {
             playsongsContainerSearch[i].addEventListener('click', () => {
+                let playButton = document.getElementById("play");
+                let pauseButton = document.getElementById("pause");
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'inline';
                 let id = playsongsContainerSearch[i].getAttribute('data-idSong');
                 let song = this.stackOfSongs.find(s => s.idSong === id);
                 this.currentIndex = i;
@@ -424,6 +428,10 @@ class Player {
 
         for (let i = 0; i < playsongsContainerPlaylist.length; i++) {
             playsongsContainerPlaylist[i].addEventListener('click', () => {
+                let playButton = document.getElementById("play");
+                let pauseButton = document.getElementById("pause");
+                playButton.style.display = 'none';
+                pauseButton.style.display = 'inline';
                 if (playerWeb.nameCurrentPlaylist != "playlist")
                     playerWeb.nameCurrentPlaylist = "playlist";
                 playerWeb.setStackSongs(listPlay.listOfSongs);
