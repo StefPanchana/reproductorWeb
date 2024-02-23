@@ -1,9 +1,9 @@
 //======================================================================================================//
 //                          Variables generales para el reproductor
 //======================================================================================================//
-let listPlay; //Lista contenedora de playlist
-let listSearch; //Lista contenedora de busqueda
-let listFav; //Lista contenedora de favoritas
+let listDefault; //Lista contenedora de todas las canciones del reproductor
+let listSearch; //Lista contenedora de canciones filtradas por busqueda
+let listFav; //Lista contenedora de canciones marcadas como favoritas
 
 let playerWeb;//Instancia del reproductor Web
 
@@ -51,11 +51,11 @@ window.onload = function() {
     //                              Instancia de listas de reproducción
     //======================================================================================================//
 
-    //Creación del listado de canciones favoritas de la sesión
-    listSearch = new Playlist("searchList", listSongsDefault);
-
     //Creación del listado por defecto de canciones del reproductor
-    listPlay = new Playlist("playlist", []);
+    listDefault = new Playlist("defaultList", listSongsDefault);
+
+    //Creación del listado de canciones favoritas de la sesión
+    listSearch = new Playlist("searchList", []);
 
     //Creación del listado de canciones filtradas por busqueda de la sesión (se actualizara en base al evento generado del usuario)
     listFav = new Playlist("favList", []);
@@ -64,6 +64,6 @@ window.onload = function() {
     //                              Instancia del Reproductor Web
     //======================================================================================================//
     playerWeb = new Player();
-    playerWeb.updateStackOfSongs(listSearch, 0, true);
+    playerWeb.updateStackOfSongs(listDefault);
 
 };
