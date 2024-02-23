@@ -50,14 +50,14 @@ window.onload = function() {
     //======================================================================================================//
     //                              Instancia de listas de reproducción
     //======================================================================================================//
-
-    //Creación del listado de canciones favoritas de la sesión
+    
+    //Creación del listado de canciones filtradas por busqueda de la sesión (se actualizara en base al evento generado del usuario)
     listSearch = new Playlist("searchList", listSongsDefault);
 
     //Creación del listado por defecto de canciones del reproductor
     listPlay = new Playlist("playlist", []);
 
-    //Creación del listado de canciones filtradas por busqueda de la sesión (se actualizara en base al evento generado del usuario)
+    //Creación del listado de canciones favoritas de la sesión
     listFav = new Playlist("favList", []);
 
     //======================================================================================================//
