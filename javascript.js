@@ -142,7 +142,6 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
-    lastActive; 
     
 
     constructor() {
@@ -155,7 +154,7 @@ class Player {
         this.currentSong = this.stackOfSongs[this.currentIndex];
         this.isStopped = false;
 
-        //Escucha click del boton #previous y ejecuta metodo previous
+        //Escucha click del boton #previous y ejecuta metoso previous
         let previousButton = document.getElementById("previous");
         previousButton.addEventListener('click', () => {
             this.previous();
@@ -260,30 +259,10 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_SearchResult_Group";
-<<<<<<< HEAD
-<<<<<<< HEAD
             iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
-=======
-            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
->>>>>>> parent of bbc917e (sin cambios)
-=======
-            iconsDiv.innerHTML = '<button class="icon-favs" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
->>>>>>> parent of bbc917e (sin cambios)
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
-
-            let iconPlaySong = document.getElementsByClassName("icon-playSong");
-            Array.from(iconPlaySong).forEach(button => {
-                button.addEventListener('click', function() {
-                    this.nameCurrentPlaylist = 'mylistofsearch';
-                    let id = button.getAttribute('data-idSong');
-                    this.currentSong = this.stackOfSongs.find(song => song.idSong == id);
-                    console.log(this.currentSong)
-                    this.play();
-                }.bind(this)); 
-            });
-
         });
 
         //Agrego eventos al boton Play
@@ -295,8 +274,6 @@ class Player {
         //Agrego evento al boton Heart
         this.addeventstobuttonheartcontainersearch();
     }
-
-
 
     //Carga de canciones en contenedor de Playlist
     updateStackPlaylist() {
@@ -342,8 +319,6 @@ class Player {
         //this.addeventstobuttonplay();
     }
 
-
-
     updateCurrentSong(song) {
         // Actualización del Cover de la canción seleccionada
         document.getElementById("cover").src = "./caratulas/" + song.cover;
@@ -385,10 +360,7 @@ class Player {
             this.audio.currentTime = 0;
             this.isStopped = false; // Reinicia la bandera
             this.audio.play();
-        } 
-        // else if (this.currentSong == undefined ) {
-        //     console.log("undefined")
-        // }
+        }
     }
 
     pause() {
