@@ -317,6 +317,9 @@ class Player {
 
         //Agrego eventos al boton Play
         //this.addeventstobuttonplay();
+
+        // Agrego evento de eliminar al boton -
+        this.addeventstobuttonlesscontainerplaylist();
     }
 
     updateCurrentSong(song) {
@@ -476,6 +479,21 @@ class Player {
         }
     }
 
+    addeventstobuttonheartcontainerplaylist = function () {
+        let containerPLayList = document.getElementById("myplayer");
+        let heartSongContainerPlaylist = containerPLayList.getElementsByClassName("icon-favs-s");
+
+        for (let i = 0; i < heartSongContainerPlaylist.length; i++) {
+            heartSongContainerPlaylist[i].addEventListener('click', () => {
+                let id = heartSongContainerPlaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listFav.addSong(song);
+                this.refreshSongsByEventFavs();
+                this.updateHeartButtonContainerPlaylist(song);
+            })
+        }
+    }
+
     refreshSongsListByEventMyPlayList() {
         let listContainer = document.getElementById("myplayer");
         listContainer.innerHTML = ''; // Clear the list container
@@ -494,6 +512,9 @@ class Player {
         });
 
         this.addeventstobuttonplayformyplaylist();
+
+        //Agrego evento al boton Heart
+        this.addeventstobuttonheartcontainerplaylist();
     }
 
     refreshSongsByEventFavs() {
@@ -514,6 +535,7 @@ class Player {
         });
 
         //this.addeventstobuttonplayformyplaylist();
+        this.addeventstobuttonlesscontainerplaylist();
     }
 
     updateHeartButtonContainerSearch(song) {
@@ -525,6 +547,18 @@ class Player {
 
             if (id === song.idSong)
                 heartSongContainerSearch[i].innerHTML = '<i class="fa-solid fa-heart"></i>';
+        }
+    }
+
+    updateHeartButtonContainerPlaylist (song) {
+        let containerPLayList = document.getElementById("myplayer");
+        let heartSongContainerMyPlaylist = containerPLayList.getElementsByClassName("icon-favs-s");
+
+        for (let i = 0; i < heartSongContainerMyPlaylist.length; i++) {
+            let id = heartSongContainerMyPlaylist[i].getAttribute('data-idSong');
+
+            if (id === song.idSong)
+                heartSongContainerMyPlaylist[i].innerHTML = '<i class="fa-solid fa-heart"></i>';
         }
     }
 }
