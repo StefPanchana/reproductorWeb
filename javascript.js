@@ -494,6 +494,26 @@ class Player {
         }
     }
 
+    addeventstobuttonDelete = function () {
+        // let deletesongsContainerplaylist = document.getElementsByClassName("icon-removePlaylist-s");
+        let ccontainerPLayList = document.getElementById("myplayer");
+        let deletesongsContainerplaylist = ccontainerPLayList.getElementsByClassName("icon-removePlaylist-s");
+        for (let i = 0; i < deletesongsContainerplaylist.length; i++) {
+            deletesongsContainerplaylist[i].addEventListener('click', () => {
+                let id = deletesongsContainerplaylist[i].getAttribute('data-idSong');
+                let song = listSongsDefault.find(s => s.idSong === id);
+                listPlay.removeSong(song);
+                this.refreshSongsListByEventMyPlayList();
+
+                if (playerWeb.nameCurrentPlaylist === listPlay.listName)
+                {
+                    this.deleteSongstoStack(song);
+                }
+
+            })
+        }
+    }
+
     refreshSongsListByEventMyPlayList() {
         let listContainer = document.getElementById("myplayer");
         listContainer.innerHTML = ''; // Clear the list container
