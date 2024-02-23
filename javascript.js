@@ -142,6 +142,7 @@ class Player {
     stackOfSongs = [];
     audio;
     muteController;
+    currentIndex;
     lastActive; 
     
 
@@ -260,21 +261,16 @@ class Player {
 
             let iconsDiv = document.createElement("div");
             iconsDiv.className = "li_SearchResult_Group";
+<<<<<<< HEAD
             iconsDiv.innerHTML = '<button class="icon-favs-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong-s" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+=======
+            iconsDiv.innerHTML = '<button class="icon-favs"  data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa-heart"></i></button><button class="icon-addPlaylist" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-regular fa fa-plus"></i></button><button class="icon-playSong" id="songButton' + stackOfSong.idSong + '" data-idSong = "' + stackOfSong.idSong + '"><i class="fa-solid fa-play"></i></button>';
+>>>>>>> bbc917e (sin cambios)
 
             listItem.appendChild(iconsDiv);
             listContainer.appendChild(listItem);
 
-            let iconPlaySong = document.getElementsByClassName("icon-playSong");
-            Array.from(iconPlaySong).forEach(button => {
-                button.addEventListener('click', function() {
-                    this.nameCurrentPlaylist = 'mylistofsearch';
-                    let id = button.getAttribute('data-idSong');
-                    this.currentSong = this.stackOfSongs.find(song => song.idSong == id);
-                    console.log(this.currentSong)
-                    this.play();
-                }.bind(this)); 
-            });
+            
 
         });
 
