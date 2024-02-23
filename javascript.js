@@ -473,11 +473,6 @@ class Player {
                 {
                     this.addSongstoStack(song);
                 }
-                //revisar no permite reproducir cancion en lista de busqueda si se le da click al mas 
-                // else
-                // {
-                //     this.setStackSongs(listPlay.listOfSongs);
-                // }
             })
         }
     }
