@@ -125,7 +125,7 @@ class Playlist{
 
     removeSong(song)
     {
-        this.listOfSongs.filter(s => s !== song);
+        this.listOfSongs.splice(this.listOfSongs.findIndex(s => s.idSong == song.idSong), 1);
     }
 
     updateList(listOfSongs){
@@ -248,7 +248,8 @@ class Player {
     }
 
     deleteSongstoStack(song) {
-        this.stackOfSongs.shift(song);
+        this.stackOfSongs.splice(this.stackOfSongs.findIndex(s => s.idSong == song.idSong), 1);
+
     }
 
     //Carga de canciones en contenedor de busqueda
@@ -511,6 +512,7 @@ class Player {
         });
 
         this.addeventstobuttonplayformyplaylist();
+        this.addeventstobuttonDelete();
     }
 
     
