@@ -374,22 +374,14 @@ class Player {
     }
 
     next() {
-        // Verifica si hay canciones siguientes en la lista
         if (this.currentIndex < this.stackOfSongs.length - 1) {
-            // Aumenta el índice para avanzar a la siguiente canción
             this.currentIndex++;
         } else {
-            // Si no hay más canciones siguientes, reinicia el índice a cero
             this.currentIndex = 0;
         }
 
-        // Actualiza la canción actual basada en el nuevo índice
         this.currentSong = this.stackOfSongs[this.currentIndex];
-
-        // Actualiza la información de la canción actual en el reproductor
         this.updateCurrentSong(this.currentSong);
-
-        // Reproduce la nueva canción
         this.play();
     }
 
