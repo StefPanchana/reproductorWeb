@@ -153,6 +153,9 @@ class Player {
         // Define la canción actual basada en el índice
         this.currentSong = this.stackOfSongs[this.currentIndex];
         this.isStopped = false;
+        this.audio.addEventListener('ended', () => {
+            this.next();
+        });
 
         //Escucha click del boton #previous y ejecuta metoso previous
         let previousButton = document.getElementById("previous");
@@ -371,20 +374,23 @@ class Player {
     }
 
     next() {
-    // Verifica si hay canciones siguientes en la lista
+        // Verifica si hay canciones siguientes en la lista
         if (this.currentIndex < this.stackOfSongs.length - 1) {
             // Aumenta el índice para avanzar a la siguiente canción
             this.currentIndex++;
-            // Actualiza la canción actual basada en el nuevo índice
-            this.currentSong = this.stackOfSongs[this.currentIndex];
-            // Actualiza la informacion de la cancion actual en el reproductor
-            this.updateCurrentSong(this.currentSong);
-            // Reproduce la nueva canción
-            this.play();
         } else {
-            // No hay más canciones siguientes, muestra un mensaje o maneja la situación según sea necesario
-            console.log("No hay más canciones siguientes en la lista.");
+            // Si no hay más canciones siguientes, reinicia el índice a cero
+            this.currentIndex = 0;
         }
+
+        // Actualiza la canción actual basada en el nuevo índice
+        this.currentSong = this.stackOfSongs[this.currentIndex];
+
+        // Actualiza la información de la canción actual en el reproductor
+        this.updateCurrentSong(this.currentSong);
+
+        // Reproduce la nueva canción
+        this.play();
     }
 
     stop() {
@@ -539,42 +545,3 @@ class MuteController {
         this.audio.muted = !this.audio.muted;
     }
 }
-
-/*=================================================================================================================*/
-/*Función para cambiar el cover por la imagen predeterminada cuando no hay contenido*/
-/*=================================================================================================================*/
-
-/* document.addEventListener("DOMContentLoaded", function() {
-    var cover = document.getElementById("cover"); // Agregado para obtener la referencia al cover
-    var imagenPredeterminada = document.getElementById("imagenPredeterminada");
-
-    // Función para mostrar la imagen predeterminada y ocultar el cover
-    function mostrarImagenPredeterminada() {
-        cover.style.display = "none";
-        imagenPredeterminada.style.visibility = "visible";
-    }
-
-    // Función para mostrar el cover y ocultar la imagen predeterminada
-    function mostrarImagenDePortada() {
-        cover.style.display = "block";
-        imagenPredeterminada.style.visibility = "hidden";
-    }
-
-    // Verifica el estado de carga de la imagen cuando se ejecuta el evento load en el cover
-    cover.addEventListener("load", function() {
-        mostrarImagenDePortada();
-    });
-
-    // Verifica el estado de carga de la imagen al inicio
-    if (cover.complete && cover.naturalWidth !== 0) {
-        mostrarImagenDePortada();
-    } else {
-        mostrarImagenPredeterminada();
-    }
-
-    // Manejador de eventos para el caso en que la imagen de portada no se carga correctamente
-    cover.addEventListener("error", function() {
-        mostrarImagenPredeterminada();
-    });
-}); */
-
